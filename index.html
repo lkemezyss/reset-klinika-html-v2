@@ -300,6 +300,52 @@ a.btn { display:block; }
   border-radius:12px;
   box-shadow:0 8px 32px rgba(0,0,0,0.2);
 }
+
+/* ═══ STICKY CTA ═══ */
+.sticky-cta {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  padding:12px 20px;
+  background:rgba(10,15,10,0.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,0.06);
+  transform:translateY(100%);
+  opacity:0;
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+  pointer-events:none;
+}
+.sticky-cta.visible {
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.sticky-cta-inner {
+  max-width:480px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.sticky-cta-text {
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;
+  color:var(--t2);
+}
+.sticky-cta-text strong {
+  color:var(--tx);
+  font-weight:500;
+}
+.sticky-cta .btn {
+  flex-shrink:0;
+  width:auto;
+  padding:10px 20px;
+  font-size:12px;
+}
 </style>
 </head>
 <body>
@@ -320,16 +366,16 @@ a.btn { display:block; }
   </div>
 
   <!-- ═══ HERO SECTION ═══ -->
-  <h1 class="bc" style="font-size:36px;font-weight:800;color:var(--tx);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px">
+  <h1 class="bc" style="font-size:30px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px">
     Tau nereikia daugiau informacijos.
   </h1>
-  <h2 class="bc" style="font-size:36px;font-weight:800;color:var(--neon);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px">
+  <h2 class="bc" style="font-size:30px;font-weight:800;color:var(--neon);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px">
     Tau tereikia išgirsti save.
   </h2>
 
-  <p class="sn" style="font-size:18px;color:var(--tx);line-height:1.7;margin-bottom:12px">Nuolatinis kažko ieškojimas, pastovus permąstymas, nerimas, apatija ar šiaip pasimetimo jausmas&hellip;</p>
+  <p class="sn" style="font-size:17px;color:var(--tx);line-height:1.75;margin-bottom:14px">Nuolatinis kažko ieškojimas, pastovus permąstymas, nerimas, apatija ar šiaip pasimetimo jausmas&hellip;</p>
 
-  <p class="sn" style="font-size:20px;color:#fff;font-weight:500;margin-bottom:16px">Pažįstama?</p>
+  <p class="sn" style="font-size:19px;color:#fff;font-weight:500;margin-bottom:16px">Pažįstama?</p>
 
   <p class="sn" style="font-size:18px;color:var(--tx);line-height:1.7;margin-bottom:28px">Asmeninė diagnostinė sesija &mdash; <span style="color:var(--neon);font-weight:500">pirmas žingsnis ramybės link.</span></p>
 
@@ -382,104 +428,78 @@ a.btn { display:block; }
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
 
 
-  <!-- ═══ SECTION 1 — WHAT 10 YEARS PRODUCED ═══ -->
+  <!-- ═══ ABOUT SECTION ═══ -->
 
-  <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">10 metų <span style="color:var(--neon)">rezultatas.</span></h2>
+  <!-- Photo + name (serves as headline) -->
+  <div class="fade-in" style="display:flex;align-items:center;gap:0;margin-bottom:20px">
+    <img src="images/Lukas img no bckrnd.png" alt="Lukas" style="width:180px;height:auto;flex-shrink:0;margin-right:-20px">
+    <div style="margin-top:-40px">
+      <p class="bc" style="font-size:32px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:4px">Lukas K., <span style="font-weight:700;color:var(--t2)">M.D.</span></p>
+      <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.08em;margin-bottom:2px">Medicinos Gydytojas</p>
+      <p class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em">Lietuva &ndash; Šveicarija</p>
+    </div>
+  </div>
 
-  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Tai, kas išsikristalizavo, nebuvo dar vienas &bdquo;slaptas&ldquo; atsakymas.</p>
-  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:20px">Ir ne kažkoks metodas, kuris kieno nors kito sprendimą primeta tau. Ne tabletė, kurios šalutiniai poveikiai parašyti smulkiu šriftu.</p>
+  <!-- Credentials -->
+  <div class="fade-in glass" style="padding:14px 16px;margin-bottom:24px">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:9px">
+      <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="18" rx="3" fill="#D52B1E"/><rect x="7" y="3" width="4" height="12" rx=".8" fill="#fff"/><rect x="3" y="7" width="12" height="4" rx=".8" fill="#fff"/></svg>
+      <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4">Darbo stažas psichiatrijos srityje Šveicarijoje</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:9px">
+      <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="6" rx="2" ry="2" fill="#000"/><rect y="6" width="18" height="6" fill="#D00"/><rect y="12" width="18" height="6" rx="2" ry="2" fill="#FFCE00"/></svg>
+      <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4">Miuncheno kognityvinės elgesio terapijos kursai</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="6" rx="2" ry="2" fill="#FDB913"/><rect y="6" width="18" height="6" fill="#006A44"/><rect y="12" width="18" height="6" rx="2" ry="2" fill="#C1272D"/></svg>
+      <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4"><span style="color:var(--tx);font-weight:500">637+</span> pravestų asmeninių sesijų</span>
+    </div>
+  </div>
 
-  <p class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">Struktūra, skirta judėti <span style="color:var(--neon)">prieš srovę.</span></p>
+  <!-- About story -->
+  <div class="fade-in glass-strong" style="border-left:2px solid var(--neon);padding:16px 18px;margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;font-style:italic">To &bdquo;dalyko&ldquo; buvau priverstas ieškoti ir aš &mdash; <span style="color:var(--neon);font-weight:500">leisk paaiškinti.</span></p>
+  </div>
 
-  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:6px">Ne į išorę&nbsp;&mdash; link dar daugiau informacijos, dar daugiau stimuliacijos, dar daugiau triukšmo.</p>
-  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.8;margin-bottom:24px"><span style="color:var(--neon);font-weight:500">Į vidų.</span> Atgal tavojo balso link, kuris ten buvo visą laiką&nbsp;&mdash; &bdquo;užverstas&ldquo;, bet nesugadintas.</p>
-
-  <!-- Looping video -->
   <div class="fade-in" style="margin-bottom:24px">
-    <video id="slow-video" autoplay loop muted playsinline poster="images/hero-glow.png" style="width:100%;display:block" onloadeddata="this.playbackRate=0.8">
-      <source src="images/ambient-loop.mp4" type="video/mp4">
-    </video>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:16px">Mane visada žavėjo žmogaus kūno ir proto vientisas veikimas. Tikriausiai tas smalsumas ir atvedė į mediciną. Intensyvus darbo, studijų ir vidinių paieškų maratonas nuvedė mane ten, kur nereikėjo eiti.</p>
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:16px"><span style="color:var(--neon);font-weight:500">Ir tada buvau išbandytas pats.</span></p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:16px">Visa tai baigėsi perdegimu, panikos atakomis ir vidine krize, kurios niekada anksčiau nebuvau patyręs.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85">Mano susidomėjimas ir paieškos nustojo būti teorinės. <span style="color:var(--tx);font-weight:500">Rasti atsakymus tapo būtinybe.</span></p>
   </div>
 
-  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:8px">Sukurta remiantis tuo, kas iš tiesų veikia: neuromokslu, klinikine psichologija, vakarų medicina&nbsp;&mdash; ir papildyta tuo, ką dauguma praleidžia&nbsp;&mdash; nuo NLP ir Zen iki dopamino detokso.</p>
-  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:20px">Su vienu tikslu: nutildyti triukšmą, išorinį ir vidinį, kad <span style="color:var(--neon);font-weight:500">tavo paties balsas vėl taptų girdimas.</span></p>
-
-  <div style="border-left:2px solid var(--border);padding-left:14px;margin-bottom:40px">
-    <p class="sn" style="font-size:13px;color:var(--t4);line-height:1.8;font-style:italic">Ne primetant atsakymus, o sukuriant sąlygas, kuriose pagaliau gali atrasti savo.</p>
+  <div class="fade-in" style="margin-bottom:24px">
+    <img src="images/s06-art.png" alt="" style="width:100%;display:block;border-radius:8px">
   </div>
 
-
-  <!-- ═══ SECTION 2 — WHAT THIS ISN'T ═══ -->
-
-  <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">Kas tai <span style="color:var(--t3)">nėra.</span></h2>
-
-  <div class="fade-in glass" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;padding:16px">
-    <div style="display:flex;gap:12px;align-items:flex-start">
-      <!-- Lucide: x (not this) -->
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-      <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7">Terapija, kuri sukasi ratais be aiškios krypties.</p>
-    </div>
-    <div style="display:flex;gap:12px;align-items:flex-start">
-      <!-- Lucide: x (not this) -->
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-      <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7">Aštuoniolika mėnesių vaikystės nagrinėjimo.</p>
-    </div>
-    <div style="display:flex;gap:12px;align-items:flex-start">
-      <!-- Lucide: x (not this) -->
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-      <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7">Kalbėjimas apie liūdnus dalykus savaitę po savaitės.</p>
-    </div>
+  <div class="fade-in glass" style="padding:18px;margin-bottom:24px">
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:16px">Skaičiau knygas, žiūrėjau video medžiagą, mėginau terapiją, kvėpavimo technikas, meditaciją, neuromokslą, NLP, alternatyvias praktikas&hellip; Viską pirmiausia išbandžiau ant savęs. Ne todėl, kad norėjau sukurti kažkokį metodą &mdash; tiesiog neturėjau kito pasirinkimo.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85">Po ilgų &bdquo;eksperimentų&ldquo; pagaliau radau tai, kas veikė man, ir tai tik dar labiau paskatino norą gilintis toliau. Turėjau galimybę dirbti psichiatrijos srityje vienoje didžiausių klinikų Šveicarijoje, dalyvauti Miuncheno kognityvinės elgesio terapijos kursuose, pravesti daugiau nei 600 individualių sesijų.</p>
   </div>
 
-  <div class="fade-in glass-strong" style="border-left:2px solid var(--neon);padding:16px 14px;margin-bottom:40px">
-    <p class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.2">Prasideda ten, kur esi tu. Juda aiškumo link. <span style="color:var(--neon)">Nesisuka ratais.</span></p>
+  <div class="fade-in" style="margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:16px">Bet svarbiausia, ką supratau per tuos metus: <span style="color:var(--neon);font-weight:500">tai ne technika ar metodas.</span></p>
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">O tai, kad žmogus negali pamatyti savęs iš šono.</p>
   </div>
 
-
-  <!-- ═══ SECTION 3 — TESTIMONIALS ═══ -->
-
-  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">Ką žmonės <span style="color:var(--neon)">iš tikrųjų patiria.</span></h2>
-
-  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:24px">Tai nėra kažkas, ką suprasi tik iš aprašymo. Bet štai ką žmonės pasakoja praėję procesą:</p>
-
-  <!-- Testimonial 1 -->
-  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
-    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Sprendimas, aplink kurį sukosi mėnesius ar metus, tampa <span style="color:var(--neon);font-weight:500">akivaizdus.</span></p>
-    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
-      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Beveik metus sukausi ratais dėl vieno sprendimo dėl karjeros. Pliusų-minusų sąrašai, pokalbiai su draugais, nemiga trečią nakties, galvoje vis tie patys scenarijai. Sesijoje paaiškėjo, kad pats sprendimas niekada ir nebuvo problema, aš tiesiog vengiau to, ką jis reiškė apie mane. Kai tai &bdquo;išlindo į dienos šviesą&ldquo;, atsakymas irgi tapo labai aiškus. Gėdingai akivaizdus, jei atvirai.&rdquo;</p>
-      <span class="mn" style="font-size:9px;color:var(--t3)">Tomas, 34 &middot; Vilnius</span>
-    </div>
+  <div class="fade-in glass-strong" style="border-left:2px solid var(--neon);padding:18px;margin-bottom:40px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:16px">Tam reikia veidrodžio. Bet ne bet kokio.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:16px">Reikia tokio, kuris atspindi ne tai, ką nori išgirsti, o tai, ko pats nematai. Kuris neteisia ir neverčia &mdash; bet ir nenuolaidžiauja. Kuris sukuria saugią erdvę ir leidžia būti visiškai atviru.</p>
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;font-style:italic">Ir svarbiausia &mdash; priima ir puoselėja tą naują tavęs versiją, <span style="color:var(--neon);font-weight:500">kol pasaulis dar nespėjo jos sutrypti.</span></p>
   </div>
 
-  <!-- Testimonial 2 -->
-  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
-    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Nerimas, kuris neturėjo vardo&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">atsektas iki kažko konkretaus.</span></p>
-    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
-      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Trejus metus gyvenau su tokiu tyliu foniniu nerimu, kurio negalėjau niekam paaiškinti. Net ne panikos priepuoliai, nieko dramatiško, tiesiog nuolatinis zyzimas, dėl kurio viskas buvo sunkiau, nei turėtų būti. Per darbo procesą pavyko atsekti jį iki konkrečios priežasties. Jis nedingo per naktį, bet pirmą kartą tiksliai žinojau, su kuo turiu reikalą.&rdquo;</p>
-      <span class="mn" style="font-size:9px;color:var(--t3)">Ieva, 21 &middot; Kaunas</span>
-    </div>
+  <!-- Hero image -->
+  <div class="img-animated fade-in" style="margin-bottom:40px;border-radius:8px">
+    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
+    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain2)"/></svg>
+    <div class="glow"></div>
+    <div class="fog"></div>
   </div>
 
-  <!-- Testimonial 3 -->
-  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
-    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Elgesio šablonas, kurį kartojo nuolat&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">paverstas aiškiu, apčiuopiamu, pakeičiamu.</span></p>
-    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
-      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Vis kartojosi tas pats. Kitas darbas, kiti santykiai, bet viskas apie tą patį. Galvojau, kad tiesiog toks esu. Pasirodė, kad tai ne charakteris, o konkretus elgesio ir mąstymo šablonas. Dabar jį pagaunu dar sakinio viduryje.&rdquo;</p>
-      <span class="mn" style="font-size:9px;color:var(--t3)">Marius, 42 &middot; Klaipėda</span>
-    </div>
-  </div>
-
-  <!-- Testimonial 4 -->
-  <div class="fade-in glass" style="padding:16px;margin-bottom:40px;border-left:2px solid var(--neon)">
-    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Emocinis sunkumas, kurį nešiojosi&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">paleistas.</span></p>
-    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
-      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Net nesupratau, koks jis sunkus, kol jo nebebuvo. Tiesiog buvau pripratusi&nbsp;&mdash; tas suspaudimas, nuovargis, jausmas, kad kažkas ne taip. Tik kai pagaliau leidau sau jaustis &bdquo;normaliai&ldquo;, supratau, kokį svorį nešiojau.&rdquo;</p>
-      <span class="mn" style="font-size:9px;color:var(--t3)">Greta, 31 &middot; Šiauliai</span>
-    </div>
-  </div>
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
 
 
-  <!-- ═══ SECTION 4 — SESSION CTA ═══ -->
+  <!-- ═══ SESSION CTA ═══ -->
 
   <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:4px">Viskas prasideda nuo</h2>
   <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:28px">vieno pokalbio.</h2>
@@ -508,34 +528,56 @@ a.btn { display:block; }
     </div>
   </div>
 
-  <!-- ═══ PRIMARY CTA — STRIPE PAYMENT LINK ═══ -->
   <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" id="cta-main" style="margin-bottom:40px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
 
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
 
-  <!-- ═══ SECTION 5 — HOW IT WORKS ═══ -->
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Ką žmonės <span style="color:var(--neon)">patiria.</span></h2>
+
+  <!-- Testimonial 1 -->
+  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Beveik metus sukausi ratais dėl vieno sprendimo dėl karjeros. Pliusų-minusų sąrašai, pokalbiai su draugais, nemiga trečią nakties, galvoje vis tie patys scenarijai. Sesijoje paaiškėjo, kad pats sprendimas niekada ir nebuvo problema, aš tiesiog vengiau to, ką jis reiškė apie mane. Kai tai &bdquo;išlindo į dienos šviesą&ldquo;, atsakymas irgi tapo labai aiškus. Gėdingai akivaizdus, jei atvirai.&rdquo;</p>
+    <span class="mn" style="font-size:10px;color:var(--t3)">Tomas, 34 &middot; Vilnius</span>
+  </div>
+
+  <!-- Testimonial 2 -->
+  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Trejus metus gyvenau su tokiu tyliu foniniu nerimu, kurio negalėjau niekam paaiškinti. Net ne panikos priepuoliai, nieko dramatiško, tiesiog nuolatinis zyzimas, dėl kurio viskas buvo sunkiau, nei turėtų būti. Per darbo procesą pavyko atsekti jį iki konkrečios priežasties. Jis nedingo per naktį, bet pirmą kartą tiksliai žinojau, su kuo turiu reikalą.&rdquo;</p>
+    <span class="mn" style="font-size:10px;color:var(--t3)">Ieva, 21 &middot; Kaunas</span>
+  </div>
+
+  <!-- Testimonial 3 -->
+  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Vis kartojosi tas pats. Kitas darbas, kiti santykiai, bet viskas apie tą patį. Galvojau, kad tiesiog toks esu. Pasirodė, kad tai ne charakteris, o konkretus elgesio ir mąstymo šablonas. Dabar jį pagaunu dar sakinio viduryje.&rdquo;</p>
+    <span class="mn" style="font-size:10px;color:var(--t3)">Marius, 42 &middot; Klaipėda</span>
+  </div>
+
+  <!-- Testimonial 4 -->
+  <div class="fade-in glass" style="padding:16px;margin-bottom:40px;border-left:2px solid var(--neon)">
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Net nesupratau, koks jis sunkus, kol jo nebebuvo. Tiesiog buvau pripratusi&nbsp;&mdash; tas suspaudimas, nuovargis, jausmas, kad kažkas ne taip. Tik kai pagaliau leidau sau jaustis &bdquo;normaliai&ldquo;, supratau, kokį svorį nešiojau.&rdquo;</p>
+    <span class="mn" style="font-size:10px;color:var(--t3)">Greta, 31 &middot; Šiauliai</span>
+  </div>
+
+  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" style="margin-bottom:40px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
+
+
+  <!-- ═══ HOW IT WORKS ═══ -->
 
   <h3 class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">Kaip tai veikia</h3>
 
   <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Prieš nuotolinį video susitikimą užpildysi diagnostinį klausimyną&nbsp;&mdash; struktūruotą anketą, kuri leis pokalbiui būti tikslingu.</p>
   <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Pokalbio trukmė apie <span style="color:var(--tx);font-weight:500">1 val.</span> Formatas diagnostinis: bus klausiama, klausomasi, ir kartu dedami taškai ant i.</p>
-  <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.8;margin-bottom:16px">Pabaigoje jausi daugiau aiškumo&nbsp;&mdash; apie situaciją, kas tau svarbu, ir tolimesnę kryptį.</p>
+  <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.8;margin-bottom:40px">Pabaigoje jausi daugiau aiškumo&nbsp;&mdash; apie situaciją, kas tau svarbu, ir tolimesnę kryptį.</p>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
 
 
-
-  <!-- ═══ SECTION 6 — PRICE ANCHOR ═══ -->
-
-  <div class="glass-strong" style="border:1px solid var(--neon);padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
-    <p class="sn" style="font-size:13px;color:var(--tx);line-height:1.4;font-weight:500">Diagnostinė sesija · 60 min · 1 : 1</p>
-    <span class="bc" style="font-size:24px;font-weight:400;color:var(--neon);line-height:1">&euro;57</span>
-  </div>
-
-  <!-- SECONDARY CTA — same Stripe link -->
-  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" style="margin-bottom:48px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
-
-
-  <!-- ═══ SECTION 7 — FAQ ═══ -->
+  <!-- ═══ FAQ ═══ -->
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
 
@@ -573,15 +615,15 @@ a.btn { display:block; }
     <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
   </div>
 
-  <!-- Hero image (moved to bottom) -->
-  <div class="img-animated fade-in" style="margin-top:40px;margin-bottom:40px">
-    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
-    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain0"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain0)"/></svg>
-    <div class="glow"></div>
-    <div class="fog"></div>
-  </div>
-
 </div><!-- /page -->
+
+<!-- ═══ STICKY CTA BAR ═══ -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-inner">
+    <p class="sticky-cta-text"><strong>Diagnostinė sesija</strong> · 60 min · €57</p>
+    <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti</a>
+  </div>
+</div>
 
 
 <!-- ════════════════════════════════════════════════════════════════
@@ -625,6 +667,29 @@ a.btn { display:block; }
       ticking = true;
     }
   }, { passive: true });
+
+  /* ═══ STICKY CTA VISIBILITY ═══ */
+  var stickyCta = document.getElementById('sticky-cta');
+  var heroCta = document.getElementById('cta-main');
+  var stickyVisible = false;
+
+  function updateStickyCta() {
+    if (!heroCta || !stickyCta) return;
+    var heroCtaRect = heroCta.getBoundingClientRect();
+    var shouldShow = heroCtaRect.bottom < 0;
+
+    if (shouldShow !== stickyVisible) {
+      stickyVisible = shouldShow;
+      if (shouldShow) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateStickyCta, { passive: true });
+  updateStickyCta();
 
 })();
 </script>
