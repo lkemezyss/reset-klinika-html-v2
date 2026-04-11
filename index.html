@@ -248,9 +248,68 @@ a.btn { display:block; }
   50%  { background-position:100% 0 }
   100% { background-position:-100% 0 }
 }
+/* ═══ PARALLAX BACKGROUND ═══ */
+.parallax-bg {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.parallax-layer {
+  position:absolute;
+  inset:0;
+  background-size:auto 100%;
+  background-position:0 center;
+  background-repeat:repeat-x;
+  will-change:background-position;
+}
+.parallax-layer-1 {
+  background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-dark-green-01-AATYiC6Ro3HjPTmhDMpWrp.webp');
+  opacity:0.35;
+  background-size:auto 80%;
+  background-position:0 60%;
+  filter:blur(1px);
+}
+.parallax-layer-2 {
+  background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-dark-green-02-2movrcNqerBsHFdccA6J8Y.webp');
+  opacity:0.55;
+  background-size:auto 90%;
+  background-position:0 50%;
+}
+.parallax-layer-3 {
+  background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-dark-green-03-j35p9k7PGdrxhv76kJLNjd.webp');
+  opacity:0.75;
+  background-size:auto 110%;
+  background-position:0 40%;
+}
+
+/* ═══ GLASSMORPHISM ═══ */
+.glass {
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;
+}
+.glass-strong {
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 <body>
+
+<!-- ═══ PARALLAX BACKGROUND ═══ -->
+<div class="parallax-bg">
+  <div class="parallax-layer parallax-layer-1" data-speed="0.05"></div>
+  <div class="parallax-layer parallax-layer-2" data-speed="0.3"></div>
+  <div class="parallax-layer parallax-layer-3" data-speed="1.0"></div>
+</div>
 
 <div class="page">
 
@@ -260,19 +319,64 @@ a.btn { display:block; }
     <a href="index-en.html" class="lang-switch"><span>EN</span></a>
   </div>
 
-  <!-- ═══ HERO SECTION (from Screen 01) ═══ -->
-  <h1 class="bc" style="font-size:36px;font-weight:800;color:var(--tx);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:32px">
-    Tau nereikia daugiau<br>informacijos.<br>
-    <span style="color:var(--neon)">Tau tiesiog reikia<br>išgirsti save.</span>
+  <!-- ═══ HERO SECTION ═══ -->
+  <h1 class="bc" style="font-size:36px;font-weight:800;color:var(--tx);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px">
+    Tau nereikia daugiau informacijos.
   </h1>
+  <h2 class="bc" style="font-size:36px;font-weight:800;color:var(--neon);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px">
+    Tau tereikia išgirsti save.
+  </h2>
 
-  <div style="margin-bottom:40px">
-    <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.9;margin-bottom:4px">Nekontroliuojamas <span style="color:var(--tx);font-weight:500">minčių srautas</span>, overthink'inimas ar nerimas</p>
-    <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.9;margin-bottom:4px">Nuolatinis kažko ieškojimas, klaidžiojimas informacijos migloje</p>
-    <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.9;margin-bottom:4px">Svyravimas tarp <span style="color:var(--tx);font-weight:500">perdegimo</span> ir <span style="color:var(--tx);font-weight:500">apatijos</span> &mdash; ryte pabudus nuovargis nuo dienos, kuri dar neprasidėjo</p>
-    <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.9;margin-bottom:4px">Pastovus kažko darymas taip ir nepajudant iš vietos</p>
-    <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.9;margin-bottom:4px">Dirglumas, kuris neturi nieko bendro su žmogumi priešais tave</p>
-    <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.9;font-style:italic">Energijos trūkumas ką nors veikti.. <span style="color:var(--t4)">net ir norėti</span></p>
+  <p class="sn" style="font-size:18px;color:var(--tx);line-height:1.7;margin-bottom:12px">Nuolatinis kažko ieškojimas, pastovus permąstymas, nerimas, apatija ar šiaip pasimetimo jausmas&hellip;</p>
+
+  <p class="sn" style="font-size:20px;color:#fff;font-weight:500;margin-bottom:16px">Pažįstama?</p>
+
+  <p class="sn" style="font-size:18px;color:var(--tx);line-height:1.7;margin-bottom:28px">Asmeninė diagnostinė sesija &mdash; <span style="color:var(--neon);font-weight:500">pirmas žingsnis ramybės link.</span></p>
+
+  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" style="margin-bottom:16px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
+
+  <p class="mn" style="font-size:10px;color:var(--t3);text-align:center;letter-spacing:.06em;margin-bottom:40px">Veda gydytojas &nbsp;·&nbsp; 637+ pravestų asmeninių sesijų &nbsp;·&nbsp; Vietų skaičius ribotas</p>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
+
+
+  <!-- ═══ PAIN SECTION ═══ -->
+  <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:8px">Kai &bdquo;ant popieriaus&ldquo; viskas gerai&hellip;</h2>
+  <h3 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--t3);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:28px">Bet iš tikrųjų nieko gero</h3>
+
+  <div class="fade-in glass" style="padding:20px;margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:12px">Tu žinai, ką &bdquo;reikėtų&ldquo; daryti &mdash; turbūt skaitei saviugdos knygas, žiūrėjai video YouTube, gal net buvai pas psichologą. Bet vis tiek jauti, kad <span style="color:var(--neon);font-weight:500">kažkas ne taip.</span> Galbūt net pradedi abejoti, ar išvis kada nors bus kitaip.</p>
+    <p class="sn" style="font-size:14px;color:var(--t3);font-style:italic">Tai ne apie tingėjimą, ir ne, tavęs nereikia taisyti.</p>
+  </div>
+
+  <!-- Hero glow image -->
+  <div class="img-animated fade-in" style="margin-bottom:40px;border-radius:8px">
+    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
+    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain1"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain1)"/></svg>
+    <div class="glow"></div>
+    <div class="fog"></div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
+
+
+  <!-- ═══ ATTENTION SECTION ═══ -->
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:28px">Naujas amžius, kuriame tavo dėmesys <span style="color:var(--neon)">nepriklauso tau</span></h2>
+
+  <div class="fade-in glass" style="padding:20px;margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:16px">Gyvename sistemoje, kuri nebuvo sukurta aiškumui.</p>
+    <p class="sn" style="font-size:15px;color:var(--t2);line-height:1.85;margin-bottom:16px">Ji buvo sukurta <span style="color:var(--neon);font-weight:500">greičiui, stimuliacijai ir reakcijoms išgauti.</span></p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:12px">Telefonas pypsi 80 kartų per dieną. Naujienos sukonstruotos taip, kad sukeltų pyktį ir baimę. Kiekviena programėlė optimizuota vienam tikslui &mdash; laikyti tavo dėmesį nuolatinėje tylios įtampos būsenoje.</p>
+    <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.85">Dienos pabaigoje tavo smegenys apdoroja daugiau informacijos, nei tavo proseneliams tekdavo per mėnesį.</p>
+  </div>
+
+  <div class="fade-in" style="margin-bottom:24px">
+    <img src="images/s05-art-2.png" alt="" style="width:100%;display:block;border-radius:8px">
+  </div>
+
+  <div class="fade-in glass" style="padding:20px;margin-bottom:40px">
+    <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.85;margin-bottom:12px;font-style:italic">Tai nėra sąmokslas. Niekas to neplanavo (greičiausiai).</p>
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">Bet galiausiai &mdash; koks skirtumas, nes tai vis tiek stumia tave tiksliai <span style="color:var(--neon);font-weight:500">priešinga kryptimi</span> nuo to vienintelio dalyko, kuris gali iš tikrųjų padėti.</p>
   </div>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
@@ -281,14 +385,6 @@ a.btn { display:block; }
   <!-- ═══ SECTION 1 — WHAT 10 YEARS PRODUCED ═══ -->
 
   <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">10 metų <span style="color:var(--neon)">rezultatas.</span></h2>
-
-  <!-- Animated image -->
-  <div class="img-animated fade-in">
-    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
-    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain1"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain1)"/></svg>
-    <div class="glow"></div>
-    <div class="fog"></div>
-  </div>
 
   <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Tai, kas išsikristalizavo, nebuvo dar vienas &bdquo;slaptas&ldquo; atsakymas.</p>
   <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:20px">Ir ne kažkoks metodas, kuris kieno nors kito sprendimą primeta tau. Ne tabletė, kurios šalutiniai poveikiai parašyti smulkiu šriftu.</p>
@@ -317,7 +413,7 @@ a.btn { display:block; }
 
   <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">Kas tai <span style="color:var(--t3)">nėra.</span></h2>
 
-  <div class="fade-in" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
+  <div class="fade-in glass" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;padding:16px">
     <div style="display:flex;gap:12px;align-items:flex-start">
       <!-- Lucide: x (not this) -->
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -335,7 +431,7 @@ a.btn { display:block; }
     </div>
   </div>
 
-  <div class="fade-in" style="background:var(--neon-lo);border-left:2px solid var(--neon);padding:16px 14px;margin-bottom:40px">
+  <div class="fade-in glass-strong" style="border-left:2px solid var(--neon);padding:16px 14px;margin-bottom:40px">
     <p class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.2">Prasideda ten, kur esi tu. Juda aiškumo link. <span style="color:var(--neon)">Nesisuka ratais.</span></p>
   </div>
 
@@ -347,36 +443,36 @@ a.btn { display:block; }
   <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:24px">Tai nėra kažkas, ką suprasi tik iš aprašymo. Bet štai ką žmonės pasakoja praėję procesą:</p>
 
   <!-- Testimonial 1 -->
-  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:24px">
+  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Sprendimas, aplink kurį sukosi mėnesius ar metus, tampa <span style="color:var(--neon);font-weight:500">akivaizdus.</span></p>
-    <div style="background:var(--neon-lo);padding:10px 12px">
+    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
       <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Beveik metus sukausi ratais dėl vieno sprendimo dėl karjeros. Pliusų-minusų sąrašai, pokalbiai su draugais, nemiga trečią nakties, galvoje vis tie patys scenarijai. Sesijoje paaiškėjo, kad pats sprendimas niekada ir nebuvo problema, aš tiesiog vengiau to, ką jis reiškė apie mane. Kai tai &bdquo;išlindo į dienos šviesą&ldquo;, atsakymas irgi tapo labai aiškus. Gėdingai akivaizdus, jei atvirai.&rdquo;</p>
       <span class="mn" style="font-size:9px;color:var(--t3)">Tomas, 34 &middot; Vilnius</span>
     </div>
   </div>
 
   <!-- Testimonial 2 -->
-  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:24px">
+  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Nerimas, kuris neturėjo vardo&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">atsektas iki kažko konkretaus.</span></p>
-    <div style="background:var(--neon-lo);padding:10px 12px">
+    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
       <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Trejus metus gyvenau su tokiu tyliu foniniu nerimu, kurio negalėjau niekam paaiškinti. Net ne panikos priepuoliai, nieko dramatiško, tiesiog nuolatinis zyzimas, dėl kurio viskas buvo sunkiau, nei turėtų būti. Per darbo procesą pavyko atsekti jį iki konkrečios priežasties. Jis nedingo per naktį, bet pirmą kartą tiksliai žinojau, su kuo turiu reikalą.&rdquo;</p>
       <span class="mn" style="font-size:9px;color:var(--t3)">Ieva, 21 &middot; Kaunas</span>
     </div>
   </div>
 
   <!-- Testimonial 3 -->
-  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:24px">
+  <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Elgesio šablonas, kurį kartojo nuolat&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">paverstas aiškiu, apčiuopiamu, pakeičiamu.</span></p>
-    <div style="background:var(--neon-lo);padding:10px 12px">
+    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
       <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Vis kartojosi tas pats. Kitas darbas, kiti santykiai, bet viskas apie tą patį. Galvojau, kad tiesiog toks esu. Pasirodė, kad tai ne charakteris, o konkretus elgesio ir mąstymo šablonas. Dabar jį pagaunu dar sakinio viduryje.&rdquo;</p>
       <span class="mn" style="font-size:9px;color:var(--t3)">Marius, 42 &middot; Klaipėda</span>
     </div>
   </div>
 
   <!-- Testimonial 4 -->
-  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:40px">
+  <div class="fade-in glass" style="padding:16px;margin-bottom:40px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Emocinis sunkumas, kurį nešiojosi&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">paleistas.</span></p>
-    <div style="background:var(--neon-lo);padding:10px 12px">
+    <div style="background:rgba(0,255,106,0.06);padding:10px 12px;border-radius:6px">
       <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">&bdquo;Net nesupratau, koks jis sunkus, kol jo nebebuvo. Tiesiog buvau pripratusi&nbsp;&mdash; tas suspaudimas, nuovargis, jausmas, kad kažkas ne taip. Tik kai pagaliau leidau sau jaustis &bdquo;normaliai&ldquo;, supratau, kokį svorį nešiojau.&rdquo;</p>
       <span class="mn" style="font-size:9px;color:var(--t3)">Greta, 31 &middot; Šiauliai</span>
     </div>
@@ -389,7 +485,7 @@ a.btn { display:block; }
   <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:28px">vieno pokalbio.</h2>
 
   <!-- Session card -->
-  <div class="fade-in" style="border:1px solid var(--border2);margin-bottom:24px;background:var(--bg2);overflow:hidden">
+  <div class="fade-in glass-strong" style="margin-bottom:24px;overflow:hidden">
     <div style="padding:16px 20px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
       <p class="mn" style="font-size:12px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em;font-weight:500">Diagnostinė sesija</p>
       <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.04em">60 min · 1 : 1</p>
@@ -430,7 +526,7 @@ a.btn { display:block; }
 
   <!-- ═══ SECTION 6 — PRICE ANCHOR ═══ -->
 
-  <div style="border:1px solid var(--neon);background:var(--neon-lo);padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+  <div class="glass-strong" style="border:1px solid var(--neon);padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
     <p class="sn" style="font-size:13px;color:var(--tx);line-height:1.4;font-weight:500">Diagnostinė sesija · 60 min · 1 : 1</p>
     <span class="bc" style="font-size:24px;font-weight:400;color:var(--neon);line-height:1">&euro;57</span>
   </div>
@@ -445,7 +541,7 @@ a.btn { display:block; }
 
   <h3 class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Dažniausiai užduodami klausimai</h3>
 
-  <div class="faq-list fade-in">
+  <div class="faq-list fade-in glass" style="padding:16px">
     <details class="faq-item">
       <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">Kuo tai skiriasi nuo terapijos?</span><span class="faq-icon">+</span></summary>
       <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">Terapija dažniausiai yra atviras procesas&nbsp;&mdash; savaitinės sesijos mėnesiais ar metais, be aiškios krypties ar galutinio taško. Čia - kiek kitaip. Tai struktūruotas diagnostinis pokalbis su konkrečiu tikslu: nustatyti, kas iš tikrųjų vyksta po paviršiumi, ir duoti tau aiškų, apčiuopiamą supratimą, su kuriuo gali judėti toliau.</p></div>
@@ -477,7 +573,13 @@ a.btn { display:block; }
     <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
   </div>
 
-  <div style="height:40px"></div>
+  <!-- Hero image (moved to bottom) -->
+  <div class="img-animated fade-in" style="margin-top:40px;margin-bottom:40px">
+    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
+    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain0"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain0)"/></svg>
+    <div class="glow"></div>
+    <div class="fog"></div>
+  </div>
 
 </div><!-- /page -->
 
@@ -502,6 +604,27 @@ a.btn { display:block; }
   /* ═══ VIDEO PLAYBACK ═══ */
   var vid = document.getElementById('slow-video');
   if (vid) vid.play().catch(function(){});
+
+  /* ═══ PARALLAX SCROLL (horizontal clouds) ═══ */
+  var parallaxLayers = document.querySelectorAll('.parallax-layer');
+  var ticking = false;
+
+  function updateParallax() {
+    var scrollY = window.pageYOffset;
+    parallaxLayers.forEach(function(layer) {
+      var speed = parseFloat(layer.getAttribute('data-speed'));
+      var xPos = -(scrollY * speed);
+      layer.style.backgroundPosition = xPos + 'px center';
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
 
 })();
 </script>
