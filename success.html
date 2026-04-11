@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Klinika — Rezervacija patvirtinta</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- META PIXEL — Purchase event (Client + Server CAPI) -->
+<script>
+// Helper to get cookie value
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+}
+
+// Meta Pixel initialization
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1285133553577719');
+fbq('track', 'PageView');
+
+// Prevent duplicate Purchase events on page refresh
+if (!sessionStorage.getItem('purchase_tracked')) {
+  const eventId = 'purchase_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+  // Client-side Purchase event with event_id for deduplication
+  fbq('track', 'Purchase', {value: 57.00, currency: 'EUR'}, {eventID: eventId});
+
+  // Server-side CAPI call (runs in parallel, won't block page)
+  (async function() {
+    try {
+      const fbp = getCookie('_fbp');
+      const fbc = getCookie('_fbc');
+
+      await fetch('/api/purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_id: eventId,
+          fbp: fbp,
+          fbc: fbc,
+          source_url: window.location.href
+        })
+      });
+    } catch (e) {
+      // Silent fail — client pixel already fired
+      console.log('CAPI call failed, client pixel still tracked');
+    }
+  })();
+
+  sessionStorage.setItem('purchase_tracked', 'true');
+}
+</script>
+
+<style>
+:root {
+  --bg: #0a0f0a;
+  --tx: #e0e8e0;
+  --t2: #b0bab0;
+  --t3: #7a8a7a;
+  --t4: #4a5a4a;
+  --neon: #00ff6a;
+  --neon-lo: rgba(0,255,106,.06);
+  --border: #2a352a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:var(--bg);
+  font-family:'DM Sans',sans-serif;
+  color:var(--t2);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.wrap {
+  max-width:480px;
+  width:100%;
+}
+.bc { font-family:'Barlow Condensed',sans-serif }
+.mn { font-family:'IBM Plex Mono',monospace }
+.sn { font-family:'DM Sans',sans-serif }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:40px">
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--neon);display:inline-block;animation:pulse 2s ease-in-out infinite"></span>
+    <span class="mn" style="font-size:11px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em">Patvirtinta</span>
+  </div>
+
+  <h1 class="bc" style="font-size:36px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:12px">
+    Tavo sesija <span style="color:var(--neon)">rezervuota.</span>
+  </h1>
+
+  <p class="sn" style="font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:32px">
+    Artimiausiu metu gausi el. laišką su diagnostiniu klausimynu ir visa reikalinga informacija.
+  </p>
+
+  <div style="border:1px solid var(--border);padding:20px;margin-bottom:24px">
+    <p class="mn" style="font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Kiti žingsniai</p>
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">
+      <span style="color:var(--neon);font-size:10px;margin-top:4px">1</span>
+      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Patikrink el. paštą (ir spam aplanką)</p>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">
+      <span style="color:var(--neon);font-size:10px;margin-top:4px">2</span>
+      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Užpildyk diagnostinį klausimyną</p>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start">
+      <span style="color:var(--neon);font-size:10px;margin-top:4px">3</span>
+      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Prisijunk nurodytu laiku per video nuorodą</p>
+    </div>
+  </div>
+
+</div>
+
+<style>
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+</style>
+</body>
+</html>

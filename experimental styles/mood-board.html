@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Klinika — Experimental Styles Mood Board</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  padding-bottom: 100px;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(10px);
+  padding: 16px 24px;
+  z-index: 1000;
+  border-bottom: 1px solid #222;
+}
+.nav h1 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 12px;
+}
+.nav-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  font-size: 11px;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.nav-links a:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Style Section */
+.style-section {
+  padding: 120px 24px 60px;
+}
+.style-header {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+.style-num {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 8px;
+}
+.style-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.style-desc {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* Phone Grid */
+.phone-grid {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* iPhone Frame */
+.iphone {
+  width: 280px;
+  flex-shrink: 0;
+}
+.iphone-frame {
+  background: #1a1a1a;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 2px #333;
+}
+.iphone-screen {
+  border-radius: 32px;
+  overflow: hidden;
+  height: 540px;
+  position: relative;
+}
+.iphone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 16px 16px;
+  z-index: 10;
+}
+.iphone-label {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Screen Content Base */
+.screen-content {
+  height: 100%;
+  padding: 48px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.screen-content .progress {
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.screen-content .progress-bar {
+  height: 100%;
+  border-radius: 2px;
+}
+.screen-content .topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.screen-content .main {
+  flex: 1;
+}
+.screen-content .cta {
+  margin-top: auto;
+  padding-top: 16px;
+}
+.screen-content .cta button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Bullet list */
+.bullets p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 3px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ORIGINAL STYLE (reference)
+   ═══════════════════════════════════════════════════════════════════ */
+.original .iphone-frame { background: #0a0f0a; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 2px #2a352a; }
+.original .screen-content { background: #0a0f0a; }
+.original .progress-bar { background: #00ff6a; }
+.original .topbar { color: #7a8a7a; }
+.original h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 800; color: #e0e8e0; text-transform: uppercase; line-height: 1.1; margin-bottom: 16px; }
+.original h1 .accent { color: #00ff6a; }
+.original .bullets p { color: #b0bab0; font-family: 'DM Sans', sans-serif; }
+.original .bullets p.dim { color: #7a8a7a; }
+.original .cta button { background: #00ff6a; color: #0a0f0a; font-family: 'DM Sans', sans-serif; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 1: LIGHT MINIMAL
+   ═══════════════════════════════════════════════════════════════════ */
+.light .iphone-frame { background: #f5f5f5; box-shadow: 0 25px 50px rgba(0,0,0,0.15), inset 0 0 0 2px #e0e0e0; }
+.light .screen-content { background: #fff; }
+.light .progress-bar { background: #2563eb; }
+.light .topbar { color: #999; }
+.light h1 { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 600; color: #1a1a1a; line-height: 1.2; margin-bottom: 16px; }
+.light h1 .accent { color: #2563eb; }
+.light .bullets p { color: #666; font-family: 'Inter', sans-serif; }
+.light .bullets p.dim { color: #999; }
+.light .cta button { background: #2563eb; color: #fff; font-family: 'Inter', sans-serif; }
+.light .iphone-notch { background: #f5f5f5; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 2: WARM EDITORIAL
+   ═══════════════════════════════════════════════════════════════════ */
+.warm .iphone-frame { background: #e8e4dc; box-shadow: 0 25px 50px rgba(0,0,0,0.15), inset 0 0 0 2px #d4cfc6; }
+.warm .screen-content { background: #faf8f5; }
+.warm .progress-bar { background: #c45d3a; }
+.warm .topbar { color: #a39e95; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.15em; }
+.warm h1 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: #2d2a26; line-height: 1.2; margin-bottom: 16px; text-transform: none; }
+.warm h1 .accent { color: #c45d3a; }
+.warm .bullets p { color: #5a5650; font-family: 'Cormorant Garamond', serif; font-size: 14px; }
+.warm .bullets p.dim { color: #8a857d; }
+.warm .cta button { background: #2d2a26; color: #faf8f5; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.05em; }
+.warm .iphone-notch { background: #e8e4dc; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 3: BRUTALIST
+   ═══════════════════════════════════════════════════════════════════ */
+.brutal .iphone-frame { background: #fff; box-shadow: 0 0 0 4px #000; border-radius: 20px; }
+.brutal .iphone-screen { border-radius: 12px; }
+.brutal .screen-content { background: #fff; }
+.brutal .progress { background: #000; height: 4px; }
+.brutal .progress-bar { background: #ff0; }
+.brutal .topbar { color: #000; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.brutal h1 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #000; text-transform: uppercase; line-height: 1.0; margin-bottom: 16px; letter-spacing: -0.02em; }
+.brutal h1 .accent { background: #ff0; padding: 0 4px; }
+.brutal .bullets p { color: #000; font-family: 'Space Grotesk', sans-serif; font-size: 11px; }
+.brutal .bullets p.dim { color: #666; }
+.brutal .cta button { background: #000; color: #fff; font-family: 'Syne', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 0; }
+.brutal .iphone-notch { background: #fff; border: 2px solid #000; border-top: none; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 4: PHARMA TEAL
+   ═══════════════════════════════════════════════════════════════════ */
+.teal .iphone-frame { background: #00a6a6; box-shadow: 0 25px 50px rgba(0,166,166,0.3); }
+.teal .screen-content { background: #00a6a6; }
+.teal .progress-bar { background: #fff; }
+.teal .topbar { color: rgba(255,255,255,0.6); }
+.teal h1 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+.teal h1 .accent { display: block; }
+.teal .bullets p { color: rgba(255,255,255,0.85); font-family: 'Space Grotesk', sans-serif; }
+.teal .bullets p.dim { color: rgba(255,255,255,0.6); }
+.teal .cta button { background: #fff; color: #00a6a6; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.teal .iphone-notch { background: #008f8f; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 5: PHARMA VIOLET
+   ═══════════════════════════════════════════════════════════════════ */
+.violet .iphone-frame { background: #7c5cbf; box-shadow: 0 25px 50px rgba(124,92,191,0.3); }
+.violet .screen-content { background: #7c5cbf; }
+.violet .progress-bar { background: #fff; }
+.violet .topbar { color: rgba(255,255,255,0.6); }
+.violet h1 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+.violet h1 .accent { display: block; }
+.violet .bullets p { color: rgba(255,255,255,0.85); font-family: 'Space Grotesk', sans-serif; }
+.violet .bullets p.dim { color: rgba(255,255,255,0.6); }
+.violet .cta button { background: #fff; color: #7c5cbf; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.violet .iphone-notch { background: #6a4daa; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 6: MIDNIGHT GRADIENT
+   ═══════════════════════════════════════════════════════════════════ */
+.midnight .iphone-frame { background: linear-gradient(180deg, #1a1a2e, #16213e); box-shadow: 0 25px 50px rgba(22,33,62,0.5); }
+.midnight .screen-content { background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%); }
+.midnight .progress-bar { background: linear-gradient(90deg, #667eea, #764ba2); }
+.midnight .topbar { color: #6c6c8a; }
+.midnight h1 { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+.midnight h1 .accent { background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.midnight .bullets p { color: #a0a0b8; font-family: 'Inter', sans-serif; }
+.midnight .bullets p.dim { color: #6c6c8a; }
+.midnight .cta button { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; font-family: 'Inter', sans-serif; }
+.midnight .iphone-notch { background: #0f0f1a; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 7: SOFT ORGANIC
+   ═══════════════════════════════════════════════════════════════════ */
+.organic .iphone-frame { background: #c8d4c0; box-shadow: 0 25px 50px rgba(100,120,90,0.2); }
+.organic .screen-content { background: linear-gradient(180deg, #e8ebe4 0%, #dde4d8 100%); }
+.organic .progress-bar { background: #4a7c59; }
+.organic .topbar { color: #6b7c63; }
+.organic h1 { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 500; color: #2c3528; line-height: 1.25; margin-bottom: 16px; text-transform: none; }
+.organic h1 .accent { color: #4a7c59; }
+.organic .bullets p { color: #4a5a44; font-family: 'DM Sans', sans-serif; }
+.organic .bullets p.dim { color: #6b7c63; }
+.organic .cta button { background: linear-gradient(135deg, #4a7c59, #3d6b4a); color: #fff; font-family: 'DM Sans', sans-serif; border-radius: 50px; }
+.organic .iphone-notch { background: #c8d4c0; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE 8: DARK AMBER
+   ═══════════════════════════════════════════════════════════════════ */
+.amber .iphone-frame { background: #1a1510; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 2px #3d3020; }
+.amber .screen-content { background: #0f0c08; }
+.amber .progress-bar { background: #f59e0b; }
+.amber .topbar { color: #8a7a60; }
+.amber h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 800; color: #f5f0e8; text-transform: uppercase; line-height: 1.1; margin-bottom: 16px; }
+.amber h1 .accent { color: #f59e0b; }
+.amber .bullets p { color: #c4b8a0; font-family: 'DM Sans', sans-serif; }
+.amber .bullets p.dim { color: #8a7a60; }
+.amber .cta button { background: #f59e0b; color: #0f0c08; font-family: 'DM Sans', sans-serif; }
+.amber .iphone-notch { background: #0f0c08; }
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <h1>Reset Klinika — Style Mood Board</h1>
+  <div class="nav-links">
+    <a href="#original">Original</a>
+    <a href="#light">Light Minimal</a>
+    <a href="#warm">Warm Editorial</a>
+    <a href="#brutal">Brutalist</a>
+    <a href="#teal">Pharma Teal</a>
+    <a href="#violet">Pharma Violet</a>
+    <a href="#midnight">Midnight</a>
+    <a href="#organic">Soft Organic</a>
+    <a href="#amber">Dark Amber</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ORIGINAL (reference)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="original" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Reference</p>
+    <h2 class="style-title">Original Style</h2>
+    <p class="style-desc">Current live design — dark green with neon accent</p>
+  </div>
+  <div class="phone-grid original">
+    <!-- Screen 01 -->
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>EN</span></div>
+            <div class="main">
+              <h1>Tau nereikia daugiau<br>vitaminų<br><span class="accent">Tau tiesiog reikia išgirsti save.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas, overthink'inimas ar nerimas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas, klaidžiojimas informacijos migloje</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+                <p class="dim">Pastovus kažko darymas taip ir nepajudant iš vietos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+
+    <!-- Screen 09 -->
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>Lietuva</span></div>
+            <div class="main">
+              <h1>Lukas K., <span style="font-weight:700;opacity:.7">M.D.</span></h1>
+              <p style="font-size:10px;color:#7a8a7a;margin-bottom:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em">Medicinos Gydytojas · Lietuva – Šveicarija</p>
+              <div style="border-left:2px solid #00ff6a;padding:12px 14px;background:rgba(0,255,106,.06);margin-bottom:16px">
+                <p style="font-size:13px;color:#e0e8e0;font-style:italic;font-family:'DM Sans',sans-serif;line-height:1.6">Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną, kurios sistema negalėjo paaiškinti.</p>
+              </div>
+              <div class="bullets">
+                <p>637+ pravestų asmeninių sesijų</p>
+                <p class="dim">Darbo stažas psichiatrijos srityje Šveicarijoje</p>
+              </div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+
+    <!-- Screen 10 -->
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 metų <span class="accent">rezultatas.</span></h1>
+              <p style="font-size:13px;color:#e0e8e0;margin-bottom:8px;font-family:'DM Sans',sans-serif;line-height:1.7">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <p style="font-size:12px;color:#7a8a7a;margin-bottom:16px;font-family:'DM Sans',sans-serif;line-height:1.7">Ir ne kažkoks metodas, kuris kieno nors kito sprendimą primeta tau.</p>
+              <h1 style="font-size:20px">Struktūra, skirta judėti <span class="accent">prieš srovę.</span></h1>
+              <p style="font-size:13px;color:#e0e8e0;font-family:'DM Sans',sans-serif;line-height:1.7"><span style="color:#00ff6a;font-weight:500">Į vidų.</span> Atgal tavojo balso link.</p>
+            </div>
+            <div class="cta"><button>Rezervuoti laiką — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LIGHT MINIMAL
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="light" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 01</p>
+    <h2 class="style-title">Light Minimal</h2>
+    <p class="style-desc">Clean, white, professional — Inter font, blue accent</p>
+  </div>
+  <div class="phone-grid light">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>EN</span></div>
+            <div class="main">
+              <h1>Tau nereikia daugiau informacijos.<br><span class="accent">Tau tiesiog reikia išgirsti save.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas, overthink'inimas ar nerimas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas, klaidžiojimas informacijos migloje</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+                <p class="dim">Pastovus kažko darymas taip ir nepajudant iš vietos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>Lietuva</span></div>
+            <div class="main">
+              <h1>Lukas K., M.D.</h1>
+              <p style="font-size:11px;color:#999;margin-bottom:16px">Medicinos Gydytojas · Lietuva – Šveicarija</p>
+              <div style="border-left:3px solid #2563eb;padding:12px 14px;background:#f5f7ff;margin-bottom:16px;border-radius:4px">
+                <p style="font-size:13px;color:#444;font-style:italic;line-height:1.6">Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną, kurios sistema negalėjo paaiškinti.</p>
+              </div>
+              <div class="bullets">
+                <p>637+ pravestų asmeninių sesijų</p>
+              </div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 metų <span class="accent">rezultatas.</span></h1>
+              <p style="font-size:13px;color:#444;margin-bottom:8px;line-height:1.7">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <p style="font-size:12px;color:#888;margin-bottom:16px;line-height:1.7">Ir ne kažkoks metodas, kuris kieno nors kito sprendimą primeta tau.</p>
+              <h1 style="font-size:18px">Struktūra, skirta judėti <span class="accent">prieš srovę.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti laiką — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     WARM EDITORIAL
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="warm" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 02</p>
+    <h2 class="style-title">Warm Editorial</h2>
+    <p class="style-desc">Cream/beige, Playfair Display serif, terracotta accent, magazine feel</p>
+  </div>
+  <div class="phone-grid warm">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>EN</span></div>
+            <div class="main">
+              <h1>Tau nereikia daugiau informacijos.<br><span class="accent">Tau tiesiog reikia išgirsti save.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas, overthink'inimas ar nerimas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas, klaidžiojimas informacijos migloje</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>Lietuva</span></div>
+            <div class="main">
+              <h1>Lukas K., M.D.</h1>
+              <p style="font-size:12px;color:#8a857d;margin-bottom:16px;font-family:'Cormorant Garamond',serif">Medicinos Gydytojas</p>
+              <div style="border-left:2px solid #c45d3a;padding:12px 14px;background:#f5f0e8;margin-bottom:16px">
+                <p style="font-size:14px;color:#5a5650;font-style:italic;line-height:1.6;font-family:'Cormorant Garamond',serif">„Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną, kurios sistema negalėjo paaiškinti."</p>
+              </div>
+              <div class="bullets"><p>637+ pravestų sesijų</p></div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>Dešimt metų <span class="accent">rezultatas.</span></h1>
+              <p style="font-size:14px;color:#5a5650;margin-bottom:16px;line-height:1.7;font-family:'Cormorant Garamond',serif">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:18px">Struktūra, skirta judėti <span class="accent">prieš srovę.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti laiką — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BRUTALIST
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="brutal" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 03</p>
+    <h2 class="style-title">Brutalist</h2>
+    <p class="style-desc">High contrast B&W, yellow highlights, Syne font, raw/bold</p>
+  </div>
+  <div class="phone-grid brutal">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>RESET KLINIKA</span><span>EN</span></div>
+            <div class="main">
+              <h1>TAU NEREIKIA DAUGIAU.<br><span class="accent">IŠGIRSK SAVE.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas</p>
+                <p class="dim">Klaidžiojimas informacijos migloje</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>PAŽĮSTAMA? →</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>RESET KLINIKA</span><span>LT</span></div>
+            <div class="main">
+              <h1>LUKAS K.<br><span style="font-size:14px;font-weight:400">M.D.</span></h1>
+              <div style="background:#ff0;padding:12px;margin:16px 0;border:2px solid #000">
+                <p style="font-size:12px;color:#000;font-weight:500;line-height:1.5;font-family:'Space Grotesk',sans-serif">BUVAU PRAKTIKUOJANTIS GYDYTOJAS, KAI ATSITRENKIAU Į SIENĄ.</p>
+              </div>
+              <div class="bullets"><p><strong>637</strong> SESIJŲ</p></div>
+            </div>
+            <div class="cta"><button>TOLIAU →</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 METŲ<br><span class="accent">REZULTATAS.</span></h1>
+              <p style="font-size:12px;color:#000;margin-bottom:16px;line-height:1.6;font-family:'Space Grotesk',sans-serif">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:18px">JUDĖK <span class="accent">PRIEŠ SROVĘ.</span></h1>
+            </div>
+            <div class="cta"><button>REZERVUOTI — €57 →</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PHARMA TEAL
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="teal" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 04</p>
+    <h2 class="style-title">Pharma Teal</h2>
+    <p class="style-desc">Solid teal background, white bold text, clean medical feel</p>
+  </div>
+  <div class="phone-grid teal">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>RESET KLINIKA</span><span>EN</span></div>
+            <div class="main">
+              <h1>TAU NEREIKIA DAUGIAU.<br><span class="accent">IŠGIRSK SAVE.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas, overthink'inimas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>RESET KLINIKA</span><span>LT</span></div>
+            <div class="main">
+              <h1>LUKAS K., M.D.</h1>
+              <p style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:16px">Medicinos Gydytojas</p>
+              <div style="background:rgba(255,255,255,0.1);padding:12px;margin-bottom:16px;border-radius:8px">
+                <p style="font-size:13px;color:#fff;font-style:italic;line-height:1.6;font-family:'Space Grotesk',sans-serif">„Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną."</p>
+              </div>
+              <div class="bullets"><p>637+ sesijų</p></div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 METŲ<br><span class="accent">REZULTATAS.</span></h1>
+              <p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:16px;line-height:1.6;font-family:'Space Grotesk',sans-serif">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:20px">JUDĖK <span class="accent">PRIEŠ SROVĘ.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PHARMA VIOLET
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="violet" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 05</p>
+    <h2 class="style-title">Pharma Violet</h2>
+    <p class="style-desc">Solid purple background, white text, premium supplement vibe</p>
+  </div>
+  <div class="phone-grid violet">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>RESET KLINIKA</span><span>EN</span></div>
+            <div class="main">
+              <h1>TAU NEREIKIA DAUGIAU.<br><span class="accent">IŠGIRSK SAVE.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>RESET KLINIKA</span><span>LT</span></div>
+            <div class="main">
+              <h1>LUKAS K., M.D.</h1>
+              <p style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:16px">Medicinos Gydytojas</p>
+              <div style="background:rgba(255,255,255,0.1);padding:12px;margin-bottom:16px;border-radius:8px">
+                <p style="font-size:13px;color:#fff;font-style:italic;line-height:1.6">„Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną."</p>
+              </div>
+              <div class="bullets"><p>637+ sesijų</p></div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 METŲ<br><span class="accent">REZULTATAS.</span></h1>
+              <p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:16px;line-height:1.6">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:20px">JUDĖK <span class="accent">PRIEŠ SROVĘ.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     MIDNIGHT GRADIENT
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="midnight" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 06</p>
+    <h2 class="style-title">Midnight Gradient</h2>
+    <p class="style-desc">Deep purple/blue gradient, glass morphism, glowing accents</p>
+  </div>
+  <div class="phone-grid midnight">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>EN</span></div>
+            <div class="main">
+              <h1>Tau nereikia daugiau informacijos.<br><span class="accent">Tau tiesiog reikia išgirsti save.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>Lietuva</span></div>
+            <div class="main">
+              <h1>Lukas K., M.D.</h1>
+              <p style="font-size:11px;color:#6c6c8a;margin-bottom:16px">Medicinos Gydytojas</p>
+              <div style="background:rgba(102,126,234,0.1);padding:12px;margin-bottom:16px;border-radius:8px;border-left:3px solid #667eea">
+                <p style="font-size:13px;color:#c0c0d8;font-style:italic;line-height:1.6">„Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną."</p>
+              </div>
+              <div class="bullets"><p>637+ sesijų</p></div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 metų <span class="accent">rezultatas.</span></h1>
+              <p style="font-size:13px;color:#a0a0b8;margin-bottom:16px;line-height:1.6">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:18px">Struktūra, skirta judėti <span class="accent">prieš srovę.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SOFT ORGANIC
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="organic" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 07</p>
+    <h2 class="style-title">Soft Organic</h2>
+    <p class="style-desc">Sage greens, soft gradients, rounded shapes, calming</p>
+  </div>
+  <div class="phone-grid organic">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>EN</span></div>
+            <div class="main">
+              <h1>Tau nereikia daugiau informacijos.<br><span class="accent">Tau tiesiog reikia išgirsti save.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>Lietuva</span></div>
+            <div class="main">
+              <h1>Lukas K., M.D.</h1>
+              <p style="font-size:11px;color:#6b7c63;margin-bottom:16px">Medicinos Gydytojas</p>
+              <div style="background:rgba(74,124,89,0.1);padding:12px;margin-bottom:16px;border-radius:12px;border-left:3px solid #4a7c59">
+                <p style="font-size:13px;color:#3d5a38;font-style:italic;line-height:1.6">„Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną."</p>
+              </div>
+              <div class="bullets"><p>637+ sesijų</p></div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 metų <span class="accent">rezultatas.</span></h1>
+              <p style="font-size:13px;color:#4a5a44;margin-bottom:16px;line-height:1.6">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:18px">Struktūra, skirta judėti <span class="accent">prieš srovę.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     DARK AMBER
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="amber" class="style-section">
+  <div class="style-header">
+    <p class="style-num">Style 08</p>
+    <h2 class="style-title">Dark Amber</h2>
+    <p class="style-desc">Dark brown/black with warm amber accent, premium feel</p>
+  </div>
+  <div class="phone-grid amber">
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>EN</span></div>
+            <div class="main">
+              <h1>Tau nereikia daugiau<br>informacijos<br><span class="accent">Tau tiesiog reikia išgirsti save.</span></h1>
+              <div class="bullets">
+                <p>Nekontroliuojamas minčių srautas</p>
+                <p class="dim">Nuolatinis kažko ieškojimas</p>
+                <p>Svyravimas tarp perdegimo ir apatijos</p>
+              </div>
+            </div>
+            <div class="cta"><button>Pažįstama?</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 01 — Hero</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+            <div class="topbar"><span>Reset Klinika</span><span>Lietuva</span></div>
+            <div class="main">
+              <h1>Lukas K., <span style="font-weight:700;opacity:.7">M.D.</span></h1>
+              <p style="font-size:10px;color:#8a7a60;margin-bottom:16px;font-family:'IBM Plex Mono',monospace">Medicinos Gydytojas</p>
+              <div style="border-left:2px solid #f59e0b;padding:12px 14px;background:rgba(245,158,11,.08);margin-bottom:16px">
+                <p style="font-size:13px;color:#f5f0e8;font-style:italic;line-height:1.6">„Buvau praktikuojantis gydytojas, kai atsitrenkiau į sieną."</p>
+              </div>
+              <div class="bullets"><p>637+ sesijų</p></div>
+            </div>
+            <div class="cta"><button>Toliau</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 09 — About</p>
+    </div>
+    <div class="iphone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <div class="screen-content">
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+            <div class="main" style="padding-top:8px">
+              <h1>10 metų <span class="accent">rezultatas.</span></h1>
+              <p style="font-size:13px;color:#c4b8a0;margin-bottom:16px;line-height:1.6">Tai, kas išsikristalizavo, nebuvo dar vienas „slaptas" atsakymas.</p>
+              <h1 style="font-size:18px">Struktūra, skirta judėti <span class="accent">prieš srovę.</span></h1>
+            </div>
+            <div class="cta"><button>Rezervuoti — €57</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="iphone-label">Screen 10 — Offer</p>
+    </div>
+  </div>
+</section>
+
+
+<script>
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>

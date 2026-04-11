@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Reset Klinika</title>
+
+<!-- ═══ META PIXEL (replace 1285133553577719) ═══ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1285133553577719');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1285133553577719&ev=PageView&noscript=1"/></noscript>
+
+<!-- ═══ OG TAGS ═══ -->
+<meta property="og:title" content="Reset Klinika — Diagnostic Session">
+<meta property="og:description" content="A structured conversation that helps you see what you can't see on your own.">
+<meta property="og:type" content="website">
+<!-- <meta property="og:image" content="https://yourdomain.com/images/og.jpg"> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Preload checkout screen hero image -->
+<link rel="preload" href="images/hero-glow.png" as="image">
+
+<style>
+:root {
+  --bg:       #0a0f0a;
+  --bg2:      #0e140e;
+  --bg3:      #131a13;
+  --surface:  #1a231a;
+  --surface2: #212b21;
+  --border:   #2a352a;
+  --border2:  #354035;
+  --tx:  #e0e8e0;
+  --t2:  #b0bab0;
+  --t3:  #7a8a7a;
+  --t4:  #4a5a4a;
+  --neon:     #00ff6a;
+  --neon-dim: rgba(0,255,106,.15);
+  --neon-lo:  rgba(0,255,106,.06);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { height:100%; -webkit-text-size-adjust:100%; }
+
+body {
+  background:var(--bg);
+  font-family:'DM Sans',sans-serif;
+  color:var(--t2);
+  min-height:100%;
+  min-height:100dvh;
+  overflow-x:hidden;
+}
+
+/* Noise overlay on body */
+body::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* ═══ FONT SHORTHANDS ═══ */
+.bc { font-family:'Barlow Condensed',sans-serif }
+.mn { font-family:'IBM Plex Mono',monospace }
+.sn { font-family:'DM Sans',sans-serif }
+
+/* ═══ SCREEN SYSTEM ═══ */
+.screen {
+  display:none;
+  min-height:100vh;
+  min-height:100dvh;
+  max-width:480px;
+  margin:0 auto;
+  padding:0 22px;
+  position:relative;
+  transition:opacity 0.2s ease, filter 0.2s ease;
+}
+.screen.active { display:flex; flex-direction:column; }
+.screen.fixed-height {
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+  justify-content:space-between;
+}
+.screen.scrollable {
+  min-height:auto;
+  height:auto;
+  overflow-y:visible;
+  padding-bottom:60px;
+}
+.screen.blur-out,
+.screen.blur-in {
+  opacity:0;
+  filter:blur(6px);
+}
+
+/* ═══ SCROLL FADE-IN ═══ */
+.fade-in {
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ═══ PROGRESS BAR ═══ */
+.progress-wrap {
+  height:1.5px;
+  background:var(--border);
+  position:relative;
+  margin:32px 0 16px;
+  flex-shrink:0;
+}
+.progress-fill {
+  position:absolute;
+  left:0;top:0;
+  height:100%;
+  background:var(--neon);
+  box-shadow:0 0 6px rgba(0,255,106,.3);
+  transition:width .4s ease;
+}
+.progress-dot {
+  position:absolute;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:5px;height:5px;
+  background:var(--neon);
+  border-radius:50%;
+  box-shadow:0 0 8px rgba(0,255,106,.5);
+  transition:left .4s ease;
+}
+
+/* ═══ TOP BAR ═══ */
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:48px;
+  flex-shrink:0;
+}
+
+/* ═══ LANGUAGE SWITCHER ═══ */
+.lang-switch {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+  padding:4px 8px;
+  border:1px solid var(--border);
+  transition:border-color .2s;
+}
+.lang-switch:hover { border-color:var(--border2); }
+.lang-switch span {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:var(--t3);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* ═══ BUTTONS ═══ */
+.btn {
+  display:block;
+  width:100%;
+  padding:16px;
+  background:var(--neon);
+  color:var(--bg);
+  border:none;
+  border-radius:0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  text-align:center;
+  cursor:pointer;
+  text-decoration:none;
+  transition:box-shadow .2s;
+}
+.btn:active { box-shadow:0 0 20px rgba(0,255,106,.3); }
+.btn-big {
+  font-size:16px;
+  padding:18px;
+  letter-spacing:.12em;
+  box-shadow:0 0 20px rgba(0,255,106,.15);
+}
+
+.bottom-cta {
+  padding-bottom:max(24px, env(safe-area-inset-bottom, 24px));
+  flex-shrink:0;
+}
+
+/* ═══ OPTION CARDS ═══ */
+.opt {
+  border:1px solid var(--border);
+  padding:16px 18px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:all .15s;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  -webkit-tap-highlight-color:transparent;
+}
+.opt:active { border-color:var(--border2); }
+.opt.selected { border-color:var(--neon); background:var(--neon-lo); }
+.opt-marker {
+  width:18px;height:18px;
+  border:1.5px solid var(--border2);
+  flex-shrink:0;
+  transition:all .15s;
+}
+.opt.selected .opt-marker {
+  border-color:var(--neon);
+  background:var(--neon);
+  box-shadow:0 0 8px rgba(0,255,106,.3);
+}
+.opt-text {
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  color:var(--t2);
+  line-height:1.4;
+}
+.opt.selected .opt-text { color:var(--tx); }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ═══ FAQ ACCORDION ═══ */
+.faq-list { display:flex; flex-direction:column; gap:0; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-item summary {
+  list-style:none;
+  cursor:pointer;
+  padding:14px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  -webkit-tap-highlight-color:transparent;
+}
+.faq-item summary::-webkit-details-marker { display:none; }
+.faq-item summary::marker { display:none; content:''; }
+.faq-icon {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:16px;
+  color:var(--t4);
+  flex-shrink:0;
+  transition:transform .2s;
+  line-height:1;
+}
+.faq-item[open] .faq-icon { transform:rotate(45deg); color:var(--neon); }
+.faq-a { padding:0 0 16px; }
+
+/* ═══ STRIPE LINK (unstyled anchor that looks like btn) ═══ */
+a.btn { display:block; }
+
+/* ═══ ANIMATED IMAGE ═══ */
+.img-animated {
+  position:relative;
+  width:100%;
+  aspect-ratio:21/9;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+.img-animated .base {
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  z-index:1;
+}
+.img-animated .grain {
+  position:absolute;
+  inset:-20%;
+  z-index:2;
+  opacity:0.06;
+  pointer-events:none;
+  animation:grainDrift 10s ease-in-out infinite alternate;
+}
+@keyframes grainDrift {
+  0%   { transform:translate(0,0) }
+  25%  { transform:translate(-2%,1%) }
+  50%  { transform:translate(1%,-1.5%) }
+  75%  { transform:translate(-1%,-0.5%) }
+  100% { transform:translate(1.5%,1%) }
+}
+.img-animated .glow {
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:radial-gradient(
+    circle at 56% 43%,
+    rgba(0,255,106,0.5) 0%,
+    rgba(0,255,106,0.25) 10%,
+    rgba(0,255,106,0.08) 22%,
+    transparent 40%
+  );
+  animation:glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { opacity:0.2 }
+  50%     { opacity:1 }
+}
+.img-animated .fog {
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(10,15,10,0.08) 20%,
+    rgba(10,15,10,0.15) 40%,
+    rgba(10,15,10,0.08) 60%,
+    transparent 80%
+  );
+  background-size:200% 100%;
+  animation:fogDrift 22s ease-in-out infinite;
+}
+@keyframes fogDrift {
+  0%   { background-position:-100% 0 }
+  50%  { background-position:100% 0 }
+  100% { background-position:-100% 0 }
+}
+
+/* ═══ SUCCESS SLIDER ═══ */
+.success-slider {
+  position:relative;
+  margin:32px 0;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+.slider-track {
+  position:relative;
+  height:48px;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  cursor:pointer;
+  overflow:hidden;
+}
+.slider-glow {
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, #ff4a4a 0%, #ffaa00 50%, #00ff6a 100%);
+  transition:width .15s ease;
+  pointer-events:none;
+}
+.slider-glow::after {
+  content:'';
+  position:absolute;
+  right:0;
+  top:0;
+  bottom:0;
+  width:40px;
+  background:inherit;
+  filter:blur(20px);
+  opacity:0.6;
+}
+.slider-thumb {
+  position:absolute;
+  top:50%;
+  left:0%;
+  transform:translate(-50%,-50%);
+  width:4px;
+  height:32px;
+  background:var(--tx);
+  box-shadow:0 0 12px rgba(0,255,106,.5);
+  transition:left .15s ease;
+  pointer-events:none;
+}
+.slider-labels {
+  display:flex;
+  justify-content:space-between;
+  margin-top:10px;
+}
+.slider-labels span {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--t4);
+}
+.slider-value {
+  text-align:center;
+  margin-top:20px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:28px;
+  font-weight:800;
+  color:var(--t4);
+  text-transform:uppercase;
+  transition:color .2s ease;
+}
+.slider-value.active { color:var(--neon); }
+</style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 01 — HERO
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height active" id="s01">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:10%"></div>
+      <div class="progress-dot" style="left:10%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <a href="index.html" class="lang-switch"><span>LT</span></a>
+    </div>
+    <h1 class="bc" style="font-size:36px;font-weight:800;color:var(--tx);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:32px">
+      You don't need more<br>
+      <span id="slot-wrapper" style="display:inline-block;position:relative;height:40px;overflow:hidden;vertical-align:bottom;min-width:20px">
+        <span id="slot-reel" style="display:block;position:relative;transition:none"></span>
+      </span><br>
+      <span style="color:var(--neon)">You just need to<br>hear yourself.</span>
+    </h1>
+    <div style="margin-bottom:24px">
+      <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.9;margin-bottom:4px">Uncontrollable <span style="color:var(--tx);font-weight:500">stream of thoughts</span>, overthinking, or anxiety</p>
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.9;margin-bottom:4px">Constant searching, wandering in a fog of information</p>
+      <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.9;margin-bottom:4px">Swinging between <span style="color:var(--tx);font-weight:500">burnout</span> and <span style="color:var(--tx);font-weight:500">apathy</span> &mdash; waking up exhausted from a day that hasn't even started</p>
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.9;margin-bottom:4px">Constantly doing something yet never actually moving forward</p>
+      <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.9;margin-bottom:4px">Irritability that has nothing to do with the person in front of you</p>
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.9;font-style:italic">Lack of energy to do anything.. <span style="color:var(--t4)">even to want</span></p>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(2)">Sound familiar?</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 02 — VALIDATION / YOU'VE TRIED
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s02">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:20%"></div>
+      <div class="progress-dot" style="left:20%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+    <h1 class="bc" style="font-size:32px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:40px">
+      Maybe you've already<br>tried to fix it<span id="terminal-dots" class="bc" style="font-weight:800;color:var(--tx);letter-spacing:.02em"></span>
+    </h1>
+    <div id="s02-options">
+      <div class="opt" data-val="books"><div class="opt-marker"></div><div class="opt-text">Read books</div></div>
+      <div class="opt" data-val="therapy"><div class="opt-marker"></div><div class="opt-text">Visited a therapist</div></div>
+      <div class="opt" data-val="apps"><div class="opt-marker"></div><div class="opt-text">Tried apps</div></div>
+      <div class="opt" data-val="videos"><div class="opt-marker"></div><div class="opt-text">Watched videos online</div></div>
+      <div class="opt" data-val="other"><div class="opt-marker"></div><div class="opt-text">Something else</div></div>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(3)">Next</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 03 — SUCCESS LEVEL
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s03">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:20%"></div>
+      <div class="progress-dot" style="left:20%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+    <h1 class="bc" style="font-size:32px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:12px">
+      And how much did it <span style="color:var(--neon)">help?</span>
+    </h1>
+    <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:8px">Mark where it feels most accurate.</p>
+
+    <div class="success-slider" id="success-slider">
+      <div class="slider-track" id="slider-track">
+        <div class="slider-glow" id="slider-glow"></div>
+        <div class="slider-thumb" id="slider-thumb"></div>
+      </div>
+      <div class="slider-labels">
+        <span style="color:#ff4a4a">not at all</span>
+        <span style="color:#00ff6a">a lot</span>
+      </div>
+      <div class="slider-value" id="slider-value">—</div>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(4)">Next</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 04 — TRANSITION / "IT DOESN'T HAVE TO BE THIS WAY"
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s04" style="justify-content:center">
+  <div class="progress-wrap" style="position:absolute;top:32px;left:22px;right:22px">
+    <div class="progress-fill" style="width:30%"></div>
+    <div class="progress-dot" style="left:30%"></div>
+  </div>
+  <div style="max-width:360px">
+    <p id="s04-line" class="mn" style="font-size:16px;color:var(--t2);line-height:1.8;margin-bottom:0"><span id="s04-typed"></span><span id="s04-cursor" style="color:var(--neon);animation:blink .6s step-end infinite">|</span></p>
+    <p id="s04-nera" class="bc" style="font-size:42px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.1;margin-top:24px;opacity:0;transform:translateY(4px)">It doesn't have to be this way.</p>
+    <p id="s04-leisk" class="sn" style="font-size:15px;color:var(--t3);margin-top:16px;opacity:0;transform:translateY(4px)">Let me explain.</p>
+  </div>
+  <div id="s04-flash" style="position:fixed;inset:0;background:var(--neon);opacity:0;pointer-events:none;z-index:100;transition:opacity .08s ease"></div>
+  <!-- Auto-advance after animation -->
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 05 — THE REFRAME
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s05">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:40%"></div>
+      <div class="progress-dot" style="left:40%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+    <h1 class="bc" style="font-size:32px;font-weight:800;color:var(--neon);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:32px">
+      Here's what's really happening.
+    </h1>
+    <div id="s05-container" style="position:relative;min-height:200px">
+      <div class="s05-p" style="opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;position:absolute;top:0;left:0;right:0">
+        <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:8px">You live in a system that wasn't designed for clarity.</p>
+        <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">It was built for <span style="color:var(--neon);font-weight:500">speed, stimulation, and extracting reactions.</span></p>
+      </div>
+      <div class="s05-p" style="opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;position:absolute;top:0;left:0;right:0">
+        <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">Your phone pings <span style="color:var(--neon);font-weight:500">80 times a day</span>. News is engineered to trigger anger and fear. Every app is optimized for one goal&nbsp;&mdash; keeping your attention in a constant state of quiet tension.</p>
+        <div style="overflow:hidden;margin:20px 0 16px"><img src="images/s05-art-1.png" alt="Illustration: information overload" style="display:block;width:100%;margin-bottom:-2px;opacity:0.9"></div>
+        <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.9">By the end of the day, your brain processes <span style="color:var(--t2)">more information</span> than your great-grandparents did in a month.</p>
+      </div>
+      <div class="s05-p" style="opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;position:absolute;top:0;left:0;right:0">
+        <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:16px">This isn't a conspiracy. Nobody planned it <span style="color:var(--t4)">(probably)</span>.</p>
+        <div style="overflow:hidden;margin-bottom:20px"><img src="images/s05-art-2.png" alt="Illustration: mental chaos" style="display:block;width:100%;margin-bottom:-2px;opacity:0.9"></div>
+        <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">But ultimately&nbsp;&mdash; what's the difference, because it still pushes you in exactly the <span style="color:var(--neon);font-weight:500">opposite direction</span> from the one thing that can actually help.</p>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button id="s05-btn" class="btn" onclick="s05next()">Next</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 06 — YOUR OWN SIGNAL
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s06">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:50%"></div>
+      <div class="progress-dot" style="left:50%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+    <h1 class="bc" style="font-size:32px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px">Your own voice.</h1>
+    <h2 class="bc" style="font-size:32px;font-weight:800;color:var(--t3);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:36px">Buried in noise.</h2>
+    <div>
+      <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:6px">Not in some mystical sense.</p>
+      <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:20px">Not "find yourself" the way it's written in a yoga or meditation brochure.</p>
+      <div style="overflow:hidden;margin-bottom:20px"><img src="images/s06-art.png" alt="Illustration: inner silence" style="display:block;width:100%;margin-bottom:-2px;opacity:0.9"></div>
+      <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85"><span style="color:var(--neon);font-weight:500">Your voice</span>&nbsp;&mdash; what's truly inside you. Your real desires. Or perhaps the inner conflicts that keep spinning that wheel of thoughts.</p>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(7)">Why is it so hard to hear yourself?</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 07 — THE EXERCISE METAPHOR
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s07">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:60%"></div>
+      <div class="progress-dot" style="left:60%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+    <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.85;margin-bottom:6px">Imagine you're doing an exercise. <span style="font-style:italic;color:var(--t4)">Everything seems normal...</span></p>
+    <p class="sn" style="font-size:15px;color:var(--t2);line-height:1.85;margin-bottom:6px">But gradually your <span style="color:var(--tx);font-weight:500">shoulder starts to hurt</span>, maybe your back. You don't understand what's wrong&nbsp;&mdash; you keep going because it seems fine.</p>
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:24px">And only when you see yourself in a mirror do you realize&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">elbow too high, back bent, the load is in the wrong place.</span></p>
+    <div style="border-top:1px solid var(--border);padding-top:18px">
+      <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:4px">And there's nothing unusual about that.</p>
+      <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:10px">It doesn't mean there's something wrong with you.</p>
+      <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">You're simply seeing yourself and your situation <span style="color:var(--neon);font-weight:500">from only one angle.</span></p>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(8)">Next</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 08 — BLIND SPOTS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s08">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:70%"></div>
+      <div class="progress-dot" style="left:70%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+    <p class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.15;margin-bottom:12px">You can't find a solution on your own not because <span style="color:var(--neon)">something's wrong with you.</span></p>
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:20px">But because you <span style="color:var(--neon);font-weight:500">can't see your blind spots</span> while being inside them.</p>
+    <div style="border-left:2px solid var(--border);padding-left:14px;margin-bottom:24px">
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.85;margin-bottom:8px">When you're inside a pattern, you can't see it. It just feels like "that's how things are."</p>
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.85;margin-bottom:8px">Thoughts that keep spinning in circles don't feel like thoughts. <span style="font-style:italic;color:var(--t4)">They feel like reality.</span></p>
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.85">A decision you keep postponing doesn't feel like avoidance. <span style="font-style:italic;color:var(--t4)">It feels like normal, ordinary behavior.</span></p>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:18px">
+      <p class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.15;margin-bottom:10px">You need someone beside you.</p>
+      <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:4px">Not to tell you what to do.</p>
+      <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">To <span style="color:var(--neon);font-weight:500">reflect back what you can't see.</span></p>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(9)">Next</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 09 — ABOUT LUKAS
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen fixed-height" id="s09">
+  <div>
+    <div class="progress-wrap" style="margin-top:32px">
+      <div class="progress-fill" style="width:80%"></div>
+      <div class="progress-dot" style="left:80%"></div>
+    </div>
+    <div class="topbar">
+      <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
+      <span class="mn" style="font-size:10px;color:var(--t3);letter-spacing:.1em">Lithuania</span>
+    </div>
+
+    <!-- Photo + name -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+      <img src="images/lukas-photo.jpg" alt="Lukas" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border)">
+      <div>
+        <p class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:2px">Lukas K., <span style="font-weight:700;color:var(--t2)">M.D.</span></p>
+        <p class="mn" style="font-size:10px;color:var(--t2);letter-spacing:.08em;margin-bottom:1px">Medical Doctor</p>
+        <p class="mn" style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em">Lithuania &ndash; Switzerland</p>
+      </div>
+    </div>
+
+    <!-- Hook -->
+    <div style="border-left:2px solid var(--neon);padding:14px 16px;margin-bottom:24px;background:var(--neon-lo)">
+      <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;font-style:italic">I was a practicing physician when I hit a wall <span style="color:var(--neon);font-weight:500;font-style:italic">that the system couldn't explain.</span></p>
+    </div>
+
+    <!-- Credentials -->
+    <div style="border:1px solid var(--border);padding:12px 14px;margin-bottom:20px">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:9px">
+        <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="18" rx="3" fill="#D52B1E"/><rect x="7" y="3" width="4" height="12" rx=".8" fill="#fff"/><rect x="3" y="7" width="12" height="4" rx=".8" fill="#fff"/></svg>
+        <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4">Work experience in psychiatry in Switzerland</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:9px">
+        <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="6" rx="2" ry="2" fill="#000"/><rect y="6" width="18" height="6" fill="#D00"/><rect y="12" width="18" height="6" rx="2" ry="2" fill="#FFCE00"/></svg>
+        <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4">Cognitive behavioral therapy courses in Munich</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="6" rx="2" ry="2" fill="#FDB913"/><rect y="6" width="18" height="6" fill="#006A44"/><rect y="12" width="18" height="6" rx="2" ry="2" fill="#C1272D"/></svg>
+        <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4"><span style="color:var(--tx);font-weight:500">637+</span> personal sessions conducted</span>
+      </div>
+    </div>
+
+    <!-- Bridge -->
+    <div style="border-left:2px solid var(--neon);opacity:.7;padding-left:16px">
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.8;font-style:italic">That wall forced me to search beyond conventional medicine&nbsp;&mdash; meditation retreats, breathwork, hypnosis, NLP, even psychedelics&nbsp;&mdash; <span style="color:var(--t2)">searching for what the standard model was missing...</span></p>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <button class="btn" onclick="goTo(10)">10 years of searching and experimentation</button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SCREEN 10 — METHOD REVEAL (long scroll)
+     Contains: method, what it isn't, testimonials, session CTA, FAQ
+     ════════════════════════════════════════════════════════════════ -->
+<div class="screen scrollable" id="s10">
+
+  <!-- Progress — full -->
+  <div class="progress-wrap" style="margin-top:32px;flex-shrink:0">
+    <div class="progress-fill" style="width:100%"></div>
+  </div>
+
+  <!-- ═══ SECTION 1 — WHAT 10 YEARS PRODUCED ═══ -->
+
+  <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px;margin-top:24px">10 years of <span style="color:var(--neon)">results.</span></h2>
+
+  <!-- Animated image -->
+  <div class="img-animated fade-in">
+    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
+    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain1"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain1)"/></svg>
+    <div class="glow"></div>
+    <div class="fog"></div>
+  </div>
+
+  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">What crystallized wasn't another "secret" answer.</p>
+  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:20px">And not some method that imposes someone else's solution on you. Not a pill with side effects written in fine print.</p>
+
+  <p class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">A structure designed to move <span style="color:var(--neon)">against the current.</span></p>
+
+  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:6px">Not outward&nbsp;&mdash; toward more information, more stimulation, more noise.</p>
+  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.8;margin-bottom:24px"><span style="color:var(--neon);font-weight:500">Inward.</span> Back toward your voice, which has been there all along&nbsp;&mdash; "buried," but not damaged.</p>
+
+  <!-- Looping video -->
+  <div class="fade-in" style="margin-bottom:24px">
+    <video id="slow-video" autoplay loop muted playsinline poster="images/hero-glow.png" style="width:100%;display:block" onloadeddata="this.playbackRate=0.8">
+      <source src="images/ambient-loop.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:8px">Built on what actually works: neuroscience, clinical psychology, Western medicine&nbsp;&mdash; and supplemented with what most miss&nbsp;&mdash; from NLP and Zen to dopamine detox.</p>
+  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:20px">With one goal: to quiet the noise, external and internal, so that <span style="color:var(--neon);font-weight:500">your own voice becomes audible again.</span></p>
+
+  <div style="border-left:2px solid var(--border);padding-left:14px;margin-bottom:40px">
+    <p class="sn" style="font-size:13px;color:var(--t4);line-height:1.8;font-style:italic">Not by imposing answers, but by creating conditions where you can finally find your own.</p>
+  </div>
+
+
+  <!-- ═══ SECTION 2 — WHAT THIS ISN'T ═══ -->
+
+  <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">What this <span style="color:var(--t3)">isn't.</span></h2>
+
+  <div class="fade-in" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <!-- Lucide: x (not this) -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7">Therapy that goes in circles without clear direction.</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <!-- Lucide: x (not this) -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7">Eighteen months of examining your childhood.</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <!-- Lucide: x (not this) -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px;opacity:.6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7">Talking about sad things week after week.</p>
+    </div>
+  </div>
+
+  <div class="fade-in" style="background:var(--neon-lo);border-left:2px solid var(--neon);padding:16px 14px;margin-bottom:40px">
+    <p class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.2">Starts where you are. Moves toward clarity. <span style="color:var(--neon)">Doesn't go in circles.</span></p>
+  </div>
+
+
+  <!-- ═══ SECTION 3 — TESTIMONIALS ═══ -->
+
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">What people <span style="color:var(--neon)">actually experience.</span></h2>
+
+  <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:24px">This isn't something you'll understand just from a description. But here's what people say after going through the process:</p>
+
+  <!-- Testimonial 1 -->
+  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">A decision they circled around for months or years becomes <span style="color:var(--neon);font-weight:500">obvious.</span></p>
+    <div style="background:var(--neon-lo);padding:10px 12px">
+      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">"For almost a year I was going in circles about a career decision. Pros and cons lists, conversations with friends, insomnia at 3am, the same scenarios playing in my head over and over. In the session it became clear that the decision itself was never the problem, I was just avoiding what it meant about me. When that 'came to light,' the answer became very clear too. Embarrassingly obvious, honestly."</p>
+      <span class="mn" style="font-size:9px;color:var(--t3)">Tomas, 34 · Vilnius</span>
+    </div>
+  </div>
+
+  <!-- Testimonial 2 -->
+  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">Anxiety that had no name&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">traced back to something concrete.</span></p>
+    <div style="background:var(--neon-lo);padding:10px 12px">
+      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">"For three years I lived with this quiet background anxiety that I couldn't explain to anyone. Not even panic attacks, nothing dramatic, just a constant hum that made everything harder than it should be. Through the process, I managed to trace it to a specific cause. It didn't disappear overnight, but for the first time I knew exactly what I was dealing with."</p>
+      <span class="mn" style="font-size:9px;color:var(--t3)">Ieva, 21 · Kaunas</span>
+    </div>
+  </div>
+
+  <!-- Testimonial 3 -->
+  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:24px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">A behavior pattern they kept repeating&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">made clear, tangible, changeable.</span></p>
+    <div style="background:var(--neon-lo);padding:10px 12px">
+      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">"The same thing kept happening. Different job, different relationship, but everything about the same issue. I thought that's just who I was. Turned out it wasn't character, but a specific behavior and thinking pattern. Now I catch it mid-sentence."</p>
+      <span class="mn" style="font-size:9px;color:var(--t3)">Marius, 42 · Klaipeda</span>
+    </div>
+  </div>
+
+  <!-- Testimonial 4 -->
+  <div class="fade-in" style="border-left:2px solid var(--neon);padding-left:14px;margin-bottom:40px">
+    <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.75;margin-bottom:12px">An emotional weight they carried&nbsp;&mdash; <span style="color:var(--neon);font-weight:500">released.</span></p>
+    <div style="background:var(--neon-lo);padding:10px 12px">
+      <p class="sn" style="font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-bottom:4px">"I didn't even realize how heavy it was until it was gone. I had just gotten used to it&nbsp;&mdash; that tightness, the fatigue, the feeling that something was wrong. Only when I finally let myself feel 'normal' did I understand what weight I'd been carrying."</p>
+      <span class="mn" style="font-size:9px;color:var(--t3)">Greta, 31 · Siauliai</span>
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 4 — SESSION CTA ═══ -->
+
+  <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:4px">It all starts with</h2>
+  <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:28px">one conversation.</h2>
+
+  <!-- Session card -->
+  <div class="fade-in" style="border:1px solid var(--border2);margin-bottom:24px;background:var(--bg2);overflow:hidden">
+    <div style="padding:16px 20px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <p class="mn" style="font-size:12px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em;font-weight:500">Diagnostic Session</p>
+      <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.04em">60 min · 1 : 1</p>
+    </div>
+    <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
+      <p class="sn" style="font-size:12px;color:var(--t4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;font-weight:500">Content and what's covered</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--neon);font-size:10px;margin-top:3px;flex-shrink:0">&#9654;</span><p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Where you really are in your current stage</p></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--neon);font-size:10px;margin-top:3px;flex-shrink:0">&#9654;</span><p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">What's most important to you right now</p></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--neon);font-size:10px;margin-top:3px;flex-shrink:0">&#9654;</span><p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">What next step makes the most sense for you</p></div>
+      </div>
+    </div>
+    <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
+      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.75;margin-bottom:6px">After the conversation, you'll leave with more clarity, lightness, and a sense of inner peace about your next steps.</p>
+      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.75;font-style:italic">Some decide to continue on their own. Others choose to keep working together, wanting to move faster.</p>
+    </div>
+    <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;background:var(--neon-lo)">
+      <span class="bc" style="font-size:34px;font-weight:400;color:var(--tx);line-height:1">&euro;57</span>
+      <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.04em">Limited spots available</p>
+    </div>
+  </div>
+
+  <!-- ═══ PRIMARY CTA — STRIPE PAYMENT LINK ═══ -->
+  <!-- REPLACE href with your Stripe Payment Link -->
+  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" id="cta-main" style="margin-bottom:40px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Book a Session</a>
+
+
+  <!-- ═══ SECTION 5 — HOW IT WORKS ═══ -->
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
+
+  <h3 class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">How it works</h3>
+
+  <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Before the remote video meeting, you'll fill out a diagnostic questionnaire&nbsp;&mdash; a structured form that will make the conversation more purposeful.</p>
+  <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">The conversation lasts about <span style="color:var(--tx);font-weight:500">1 hour.</span> The format is diagnostic: questions will be asked, you'll be listened to, and together we'll connect the dots.</p>
+  <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.8;margin-bottom:16px">By the end, you'll feel more clarity&nbsp;&mdash; about your situation, what matters to you, and your direction forward.</p>
+
+
+
+  <!-- ═══ SECTION 6 — PRICE ANCHOR ═══ -->
+
+  <div style="border:1px solid var(--neon);background:var(--neon-lo);padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+    <p class="sn" style="font-size:13px;color:var(--tx);line-height:1.4;font-weight:500">Diagnostic Session · 60 min · 1 : 1</p>
+    <span class="bc" style="font-size:24px;font-weight:400;color:var(--neon);line-height:1">&euro;57</span>
+  </div>
+
+  <!-- SECONDARY CTA — same Stripe link -->
+  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" style="margin-bottom:48px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Book a Session</a>
+
+
+  <!-- ═══ SECTION 7 — FAQ ═══ -->
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
+
+  <h3 class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Frequently Asked Questions</h3>
+
+  <div class="faq-list fade-in">
+    <details class="faq-item">
+      <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">How is this different from therapy?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">Therapy is usually an open-ended process&nbsp;&mdash; weekly sessions for months or years, without clear direction or an endpoint. This is different. It's a structured diagnostic conversation with a specific goal: to identify what's really happening beneath the surface and give you a clear, tangible understanding that you can move forward with.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">How does the session work in practice?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">First, after booking, you'll receive a structured diagnostic questionnaire via email. It will help you formulate what's going on and make the session itself more productive. Then you'll join a video call using the link at your scheduled time.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">What happens after the session?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">Beyond this first session, there's a structured 8-12 week process designed for deeper change. But not everyone needs it. The first session provides clarity on its own&nbsp;&mdash; many people leave having gotten what they needed. If you feel like continuing&nbsp;&mdash; we'll discuss it.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">Why does the session cost &euro;57?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">The price is deliberately set at or below the market average for a standard therapy session, because the biggest obstacle to real change is usually taking that first step.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">Do I need to travel somewhere?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">No - the first session takes place remotely via video call. You'll receive the link and all the information after booking.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="mn" style="font-size:12px;color:var(--tx);letter-spacing:.02em;font-weight:500">Is everything confidential?</span><span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">Without exception. Everything discussed in the session stays within it. No recordings, no shared notes, no third parties.</p></div>
+    </details>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div style="text-align:center;margin-top:32px;margin-bottom:16px">
+    <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Book a Session</a>
+  </div>
+
+  <div style="height:40px"></div>
+
+</div><!-- /s10 -->
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+
+  /* ═══ NAVIGATION ═══ */
+  var current = 1;
+  var screens = {};
+  for (var i = 1; i <= 10; i++) {
+    screens[i] = document.getElementById(i < 10 ? 's0' + i : 's10');
+  }
+
+  // Restore screen from URL hash on load
+  var hash = parseInt(window.location.hash.replace('#', ''));
+  if (hash >= 1 && hash <= 10 && screens[hash]) {
+    screens[1].classList.remove('active');
+    screens[hash].classList.add('active');
+    current = hash;
+  }
+
+  window.goTo = function(n) {
+    if (n === current || !screens[n]) return;
+
+    var prev = screens[current];
+    var next = screens[n];
+
+    // Blur out current
+    prev.classList.add('blur-out');
+
+    setTimeout(function() {
+      // Switch screens
+      prev.classList.remove('active', 'blur-out');
+      next.classList.add('active', 'blur-in');
+      window.scrollTo(0, 0);
+      current = n;
+      history.replaceState(null, '', '#' + n);
+
+      // Blur in new
+      requestAnimationFrame(function() {
+        next.classList.remove('blur-in');
+      });
+
+      // Trigger screen-specific animations
+      if (n === 4) startS04();
+      if (n === 5) startS05();
+
+      // Force video play on screen 10 (iOS fix)
+      if (n === 10) {
+        var vid = document.getElementById('slow-video');
+        if (vid) vid.play().catch(function(){});
+      }
+
+      // Meta Pixel: track funnel progress
+      if (typeof fbq !== 'undefined') {
+        if (n === 6) fbq('track', 'ViewContent', {content_name: 'funnel_midpoint'});
+        if (n === 10) fbq('track', 'ViewContent', {content_name: 'offer_page'});
+      }
+    }, 200)
+
+  };
+
+
+  /* ═══ SCREEN 01 — SLOT MACHINE ═══ */
+  (function(){
+    var words = ['therapy','vitamins','exercise','information','books','advice','podcasts','courses','meditation','motivation','planning'];
+    var fakeWords = ['solutions','answers'];
+    var wrapper = document.getElementById('slot-wrapper');
+    var reel = document.getElementById('slot-reel');
+    var lineH = 40;
+    var wordStyle = 'display:block;height:'+lineH+'px;line-height:'+lineH+'px;font-family:Barlow Condensed,sans-serif;font-size:36px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;color:#e0e8e0;white-space:nowrap;';
+    var html = '';
+    // Fixed sequence: repeat word list 3 times in same order
+    for (var c = 0; c < 3; c++) {
+      words.forEach(function(w){ html += '<span style="'+wordStyle+'">'+w+'</span>'; });
+    }
+    // End with alternating fake words (visible through blur as it slows)
+    for (var i = 0; i < 80; i++) html += '<span style="'+wordStyle+'">'+fakeWords[i%2]+'</span>';
+    reel.innerHTML = html;
+    var totalWords = 3*words.length + 80;
+    var reelHeight = totalWords * lineH;
+    var maxW = 0;
+    Array.from(reel.children).forEach(function(el){ if(el.offsetWidth > maxW) maxW = el.offsetWidth; });
+    wrapper.style.width = (maxW+4)+'px';
+
+    // Start slightly offset so first word appears already in motion
+    var pos=8, speed=0, frameCount=15, maxSpeed=10;
+    reel.style.transform='translateY(-'+pos+'px)';
+    var accelF=90, cruiseF=70, decelF=120, totalF=accelF+cruiseF+decelF;
+    function animate(){
+      frameCount++;
+      if(frameCount<=accelF){ speed=maxSpeed*Math.pow(frameCount/accelF,2); }
+      else if(frameCount<=accelF+cruiseF){
+        speed=maxSpeed;
+        var cp=(frameCount-accelF)/cruiseF;
+        if(cp>.6) reel.style.filter='blur('+((cp-.6)/.4*3)+'px)';
+      } else if(frameCount<=totalF){
+        var p=(frameCount-accelF-cruiseF)/decelF;
+        speed=maxSpeed*Math.pow(1-p,3);
+        if(speed<.1) speed=0;
+        reel.style.filter='blur('+(3+p*3)+'px)';
+      } else { speed=0; }
+      if(pos+speed<reelHeight-lineH*2) pos+=speed; else speed=0;
+      reel.style.transform='translateY(-'+pos+'px)';
+      if(speed===0&&frameCount>=totalF){
+        var idx=Math.round(pos/lineH);
+        var tp=idx*lineH;
+        reel.style.transition='transform .6s cubic-bezier(.25,.1,.25,1)';
+        reel.style.transform='translateY(-'+tp+'px)';
+        setTimeout(function(){
+          pos=tp;
+          var ch=reel.children;
+          for(var j=0;j<ch.length;j++) if(j!==idx) ch[j].style.visibility='hidden';
+          wrapper.style.overflow='visible';
+          wrapper.style.pointerEvents='none';
+          reel.style.filter='blur(6px)';
+        },650);
+        return;
+      }
+      requestAnimationFrame(animate);
+    }
+    setTimeout(function(){ requestAnimationFrame(animate); },300);
+  })();
+
+
+  /* ═══ SCREEN 02 — MULTI-SELECT + TERMINAL DOTS ═══ */
+  (function(){
+    var opts = document.querySelectorAll('#s02-options .opt');
+    opts.forEach(function(o){
+      o.addEventListener('click', function(){
+        o.classList.toggle('selected');
+      });
+    });
+    var dots = document.getElementById('terminal-dots');
+    var d = 0;
+    setInterval(function(){ d=(d+1)%4; dots.textContent='.'.repeat(d); },500);
+  })();
+
+
+  /* ═══ SCREEN 03 — SUCCESS SLIDER ═══ */
+  (function(){
+    var track = document.getElementById('slider-track');
+    var glow = document.getElementById('slider-glow');
+    var thumb = document.getElementById('slider-thumb');
+    var valueEl = document.getElementById('slider-value');
+    var dragging = false;
+    var currentValue = -1;
+
+    var labels = ['not at all', 'not really', 'a little', 'somewhat', 'quite a bit', 'a lot'];
+
+    // Interpolate color from red (0%) → yellow (50%) → green (100%)
+    function getColor(pct) {
+      var r, g, b = 0;
+      if (pct < 50) {
+        // Red to yellow
+        r = 255;
+        g = Math.round((pct / 50) * 170);
+      } else {
+        // Yellow to green
+        r = Math.round(255 - ((pct - 50) / 50) * 255);
+        g = Math.round(170 + ((pct - 50) / 50) * 85);
+      }
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+
+    function updateSlider(pct) {
+      pct = Math.max(0, Math.min(100, pct));
+      glow.style.width = pct + '%';
+      thumb.style.left = pct + '%';
+
+      // Set thumb glow color
+      var color = getColor(pct);
+      thumb.style.boxShadow = '0 0 12px ' + color;
+
+      // Map percentage to label
+      var idx = Math.floor(pct / 100 * (labels.length - 0.01));
+      if (idx !== currentValue || currentValue === -1) {
+        currentValue = idx;
+        valueEl.textContent = labels[idx];
+        valueEl.style.color = color;
+        valueEl.classList.add('active');
+      }
+    }
+
+    function getPercent(e) {
+      var rect = track.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      return (x / rect.width) * 100;
+    }
+
+    track.addEventListener('mousedown', function(e) {
+      dragging = true;
+      updateSlider(getPercent(e));
+    });
+    track.addEventListener('touchstart', function(e) {
+      dragging = true;
+      updateSlider(getPercent(e));
+    }, {passive: true});
+
+    document.addEventListener('mousemove', function(e) {
+      if (dragging) updateSlider(getPercent(e));
+    });
+    document.addEventListener('touchmove', function(e) {
+      if (dragging) updateSlider(getPercent(e));
+    }, {passive: true});
+
+    document.addEventListener('mouseup', function() { dragging = false; });
+    document.addEventListener('touchend', function() { dragging = false; });
+  })();
+
+
+  /* ═══ SCREEN 04 — TERMINAL TYPING + REVEAL ═══ */
+  var s04started = false;
+  function startS04(){
+    if(s04started) return;
+    s04started = true;
+
+    var typed = document.getElementById('s04-typed');
+    var cursor = document.getElementById('s04-cursor');
+    var nera = document.getElementById('s04-nera');
+    var leisk = document.getElementById('s04-leisk');
+    var flash = document.getElementById('s04-flash');
+
+    var line1 = 'And maybe sometimes a thought arises:';
+    var line2 = 'this is probably just how it is...';
+    var fullText = line1 + '\n' + line2;
+    var charIndex = 0;
+    var delay = 600;
+    var charSpeed = 50;
+
+    function typeNext() {
+      if (charIndex < fullText.length) {
+        var char = fullText[charIndex];
+        if (char === '\n') {
+          typed.innerHTML += '<br><span style="font-style:italic;color:var(--t3)">';
+        } else if (charIndex > line1.length) {
+          // We're in line2, append to italic span
+          var spans = typed.querySelectorAll('span');
+          if (spans.length > 0) {
+            spans[spans.length-1].textContent += char;
+          } else {
+            typed.innerHTML += char;
+          }
+        } else {
+          typed.innerHTML += char;
+        }
+        charIndex++;
+        setTimeout(typeNext, charSpeed + Math.random() * 30);
+      } else {
+        // Done typing, pause then reveal
+        setTimeout(showReveal, 1200);
+      }
+    }
+
+    function showReveal() {
+      cursor.style.display = 'none';
+      // Subtle screen flicker
+      flash.style.opacity = '0.025';
+      setTimeout(function(){ flash.style.opacity = '0'; }, 80);
+      setTimeout(function(){ flash.style.opacity = '0.015'; }, 150);
+      setTimeout(function(){ flash.style.opacity = '0'; }, 200);
+      nera.style.transition = 'opacity .2s ease, transform .2s ease';
+      nera.style.opacity = '1';
+      nera.style.transform = 'translateY(0)';
+      // Show "Let me explain." after a beat
+      setTimeout(function(){
+        leisk.style.transition = 'opacity .4s ease, transform .4s ease';
+        leisk.style.opacity = '1';
+        leisk.style.transform = 'translateY(0)';
+      }, 700);
+      // Auto-advance after longer pause
+      setTimeout(function(){ goTo(5); }, 4000);
+    }
+
+    setTimeout(typeNext, delay);
+  }
+
+
+  /* ═══ SCREEN 05 — PARAGRAPH SWAP ═══ */
+  var s05step = -1;
+  var s05paras = document.querySelectorAll('.s05-p');
+  var s05btn = document.getElementById('s05-btn');
+  var s05animating = false;
+  var s05started = false;
+
+  function startS05(){
+    if(s05started) return;
+    s05started = true;
+    // Show first paragraph
+    setTimeout(function(){ s05showStep(0); }, 300);
+  }
+
+  function s05showStep(n){
+    if(s05animating) return;
+    s05animating = true;
+    if(s05step >= 0 && s05step < s05paras.length){
+      s05paras[s05step].style.opacity='0';
+      s05paras[s05step].style.transform='translateY(-6px)';
+    }
+    setTimeout(function(){
+      if(s05step >= 0) s05paras[s05step].style.visibility='hidden';
+      s05step = n;
+      if(s05step < s05paras.length){
+        var next = s05paras[s05step];
+        next.style.visibility='visible';
+        next.style.transform='translateY(8px)';
+        next.style.opacity='0';
+        void next.offsetWidth;
+        next.style.opacity='1';
+        next.style.transform='translateY(0)';
+      }
+      if(s05step === s05paras.length - 1){
+        setTimeout(function(){ s05btn.textContent='What thing?'; },200);
+      }
+      setTimeout(function(){ s05animating=false; },500);
+    },400);
+  }
+
+  window.s05next = function(){
+    if(s05step < s05paras.length - 1) s05showStep(s05step + 1);
+    else goTo(6);
+  };
+
+
+  /* ═══ SCROLL FADE-IN (Screen 10) ═══ */
+  var fadeEls = document.querySelectorAll('.fade-in');
+  var fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+
+
+})();
+</script>
+
+</body>
+</html>
