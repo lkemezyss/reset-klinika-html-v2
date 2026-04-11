@@ -362,7 +362,6 @@ a.btn { display:block; }
   <!-- ═══ TOP BAR ═══ -->
   <div class="topbar">
     <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
-    <a href="index-en.html" class="lang-switch"><span>EN</span></a>
   </div>
 
   <!-- ═══ HERO SECTION ═══ -->
@@ -670,13 +669,18 @@ a.btn { display:block; }
 
   /* ═══ STICKY CTA VISIBILITY ═══ */
   var stickyCta = document.getElementById('sticky-cta');
-  var heroCta = document.getElementById('cta-main');
+  var allCtas = document.querySelectorAll('.btn-big');
   var stickyVisible = false;
 
+  function isInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  }
+
   function updateStickyCta() {
-    if (!heroCta || !stickyCta) return;
-    var heroCtaRect = heroCta.getBoundingClientRect();
-    var shouldShow = heroCtaRect.bottom < 0;
+    if (!stickyCta || !allCtas.length) return;
+    var anyCtaVisible = Array.prototype.some.call(allCtas, isInViewport);
+    var shouldShow = !anyCtaVisible;
 
     if (shouldShow !== stickyVisible) {
       stickyVisible = shouldShow;
