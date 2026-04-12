@@ -686,6 +686,9 @@ a.btn { display:block; }
     }
   }, { passive: true });
 
+  // Initialize parallax position immediately (prevents jump on first scroll)
+  updateParallax();
+
   /* ═══ STICKY CTA VISIBILITY ═══ */
   var stickyCta = document.getElementById('sticky-cta');
   var allCtas = document.querySelectorAll('.btn-big');
