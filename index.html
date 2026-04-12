@@ -23,6 +23,15 @@ fbq('track', 'PageView');
 <meta property="og:type" content="website">
 <!-- <meta property="og:image" content="https://yourdomain.com/images/og.jpg"> -->
 
+<!-- ═══ THEME DETECTION (must run early) ═══ -->
+<script>
+(function(){
+  var path = window.location.pathname;
+  if (path === '/v1') document.documentElement.setAttribute('data-bg-theme', 'navy');
+  else if (path === '/v2') document.documentElement.setAttribute('data-bg-theme', 'charcoal');
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -717,18 +726,6 @@ a.btn { display:block; }
   window.addEventListener('scroll', updateStickyCta, { passive: true });
   updateStickyCta();
 
-})();
-</script>
-
-<script>
-(function(){
-  var path = window.location.pathname;
-  var theme = null;
-  if (path === '/v1') theme = 'navy';
-  else if (path === '/v2') theme = 'charcoal';
-  if (theme) {
-    document.documentElement.setAttribute('data-bg-theme', theme);
-  }
 })();
 </script>
 
