@@ -4,5 +4,10 @@
       "memory": 128,
       "maxDuration": 10
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/v1", "destination": "/index.html?theme=default" },
+    { "source": "/v2", "destination": "/index.html?theme=sage" },
+    { "source": "/v3", "destination": "/index.html?theme=charcoal" }
+  ]
 }
