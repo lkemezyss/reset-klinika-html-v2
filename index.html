@@ -719,9 +719,11 @@ a.btn { display:block; }
 
 <script>
 (function(){
-  var urlParams = new URLSearchParams(window.location.search);
-  var theme = urlParams.get('theme');
-  if (theme && theme !== 'default') {
+  var path = window.location.pathname;
+  var theme = null;
+  if (path === '/v1') theme = 'navy';
+  else if (path === '/v2') theme = 'charcoal';
+  if (theme) {
     document.documentElement.setAttribute('data-bg-theme', theme);
   }
 })();
