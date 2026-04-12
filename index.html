@@ -446,6 +446,19 @@ a.btn { display:block; }
 [data-bg-theme="navy"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-navy.png') !important; }
 [data-bg-theme="navy"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(0,212,255,0.5) 0%, rgba(0,212,255,0.25) 10%, rgba(0,212,255,0.08) 22%, transparent 40%); }
 
+/* Beige / Gold theme */
+[data-bg-theme="beige"] { --bg:#12100c; --bg2:#18150f; --bg3:#1e1a14; --surface:#28231a; --border:#3d3628; --neon:#d4a574; --neon-dim:rgba(212,165,116,.15); --neon-lo:rgba(212,165,116,.06); --tx:#f0e8e0; --t2:#dcd0c4; --t3:#a89888; }
+[data-bg-theme="beige"] .parallax-layer-1 { background-image:url('images/parallax-clouds-beige-01.png') !important; }
+[data-bg-theme="beige"] .parallax-layer-2 { background-image:url('images/parallax-clouds-beige-02.png') !important; }
+[data-bg-theme="beige"] .parallax-layer-3 { background-image:url('images/parallax-clouds-beige-03.png') !important; }
+[data-bg-theme="beige"] img[src*="hero-glow.png"] { content:url('images/hero-glow-amber.png'); }
+[data-bg-theme="beige"] img[src*="s05-art-1.png"] { content:url('images/s05-art-1-amber.png'); }
+[data-bg-theme="beige"] img[src*="s05-art-2.png"] { content:url('images/s05-art-2-amber.png'); }
+[data-bg-theme="beige"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-amber.png') !important; }
+[data-bg-theme="beige"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(212,165,116,0.5) 0%, rgba(212,165,116,0.25) 10%, rgba(212,165,116,0.08) 22%, transparent 40%); }
+[data-bg-theme="beige"] .glass { background:rgba(0,0,0,0.35); border-color:rgba(255,255,255,0.06); }
+[data-bg-theme="beige"] .glass-strong { background:rgba(0,0,0,0.45); }
+
 </style>
 </head>
 <body>
@@ -799,9 +812,9 @@ a.btn { display:block; }
 <div class="dev-theme-panel" id="dev-panel">
   <h4>Background</h4>
   <select id="bg-theme-select">
-    <option value="default">Dark Green (Current)</option>
     <option value="charcoal">Charcoal / Amber</option>
     <option value="navy">Navy / Cyan</option>
+    <option value="beige">Beige / Gold</option>
   </select>
 
 </div>
