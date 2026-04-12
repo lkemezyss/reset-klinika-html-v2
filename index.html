@@ -429,6 +429,11 @@ a.btn { display:block; }
 [data-bg-theme="charcoal"] .parallax-layer-1 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-01-4Z27jjZa6DyoeFhLuYQ5z3.webp') !important; }
 [data-bg-theme="charcoal"] .parallax-layer-2 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-02-8SpsqGu2ZH6KrovmcUHviC.webp') !important; }
 [data-bg-theme="charcoal"] .parallax-layer-3 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-03-X8TupJAi7BLFD8dsYuZYka.webp') !important; }
+[data-bg-theme="charcoal"] img[src*="hero-glow.png"] { content:url('images/hero-glow-amber.png'); }
+[data-bg-theme="charcoal"] img[src*="s05-art-1.png"] { content:url('images/s05-art-1-amber.png'); }
+[data-bg-theme="charcoal"] img[src*="s05-art-2.png"] { content:url('images/s05-art-2-amber.png'); }
+[data-bg-theme="charcoal"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-amber.png') !important; }
+[data-bg-theme="charcoal"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(255,184,74,0.5) 0%, rgba(255,184,74,0.25) 10%, rgba(255,184,74,0.08) 22%, transparent 40%); }
 
 /* Background theme overrides - Sage */
 [data-bg-theme="sage"] { --bg:#0d0f0a; --bg2:#11140e; --bg3:#161a13; --surface:#1e231a; --border:#2e352a; --neon:#00ff6a; --neon-dim:rgba(0,255,106,.15); --neon-lo:rgba(0,255,106,.06); }
@@ -478,12 +483,8 @@ a.btn { display:block; }
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">Tu žinai, ką &bdquo;reikėtų&ldquo; daryti &mdash; turbūt skaitei saviugdos knygas, žiūrėjai video YouTube, gal net buvai pas psichologą. Bet vis tiek jauti, kad <span style="color:var(--neon);font-weight:500">kažkas ne taip.</span> Galbūt net pradedi abejoti, ar išvis kada nors bus kitaip.</p>
   </div>
 
-  <!-- Hero glow image -->
-  <div class="img-animated fade-in" style="margin-bottom:40px;border-radius:8px">
-    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
-    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain1"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain1)"/></svg>
-    <div class="glow"></div>
-    <div class="fog"></div>
+  <div class="fade-in" style="margin-bottom:40px">
+    <img src="images/s05-art-2.png" alt="" style="width:100%;display:block;border-radius:8px">
   </div>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
@@ -500,7 +501,7 @@ a.btn { display:block; }
   </div>
 
   <div class="fade-in" style="margin-bottom:24px">
-    <img src="images/s05-art-2.png" alt="" style="width:100%;display:block;border-radius:8px">
+    <img src="images/s05-art-1.png" alt="" style="width:100%;display:block;border-radius:8px">
   </div>
 
   <div class="fade-in glass" style="padding:20px;margin-bottom:40px">
@@ -551,8 +552,12 @@ a.btn { display:block; }
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85">Mano susidomėjimas ir paieškos nustojo būti teorinės. <span class="glow" style="color:var(--tx);font-weight:500">Rasti atsakymus tapo būtinybe.</span></p>
   </div>
 
-  <div class="fade-in" style="margin-bottom:24px">
-    <img src="images/s06-art.png" alt="" style="width:100%;display:block;border-radius:8px">
+  <!-- Hero glow image -->
+  <div class="img-animated fade-in" style="margin-bottom:24px;border-radius:8px">
+    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
+    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain1"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain1)"/></svg>
+    <div class="glow"></div>
+    <div class="fog"></div>
   </div>
 
   <div class="fade-in glass" style="padding:18px;margin-bottom:24px">
@@ -571,12 +576,8 @@ a.btn { display:block; }
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;font-style:italic">Ir svarbiausia &mdash; priima ir puoselėja tą naują tavęs versiją, <span style="color:var(--neon);font-weight:500">kol pasaulis dar nespėjo jos sutrypti.</span></p>
   </div>
 
-  <!-- Hero image -->
-  <div class="img-animated fade-in" style="margin-bottom:40px;border-radius:8px">
-    <div class="base" style="background-image:url('images/hero-glow.png')"></div>
-    <svg class="grain" viewBox="0 0 256 256" preserveAspectRatio="none"><filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain2)"/></svg>
-    <div class="glow"></div>
-    <div class="fog"></div>
+  <div class="fade-in" style="margin-bottom:40px">
+    <img src="images/s05-art-2.png" alt="" style="width:100%;display:block;border-radius:8px">
   </div>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
