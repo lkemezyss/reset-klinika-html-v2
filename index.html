@@ -25,7 +25,9 @@ fbq('track', 'PageView');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Dev: Barlow Condensed for original version toggle -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
 
 <!-- Preload checkout screen hero image -->
 <link rel="preload" href="images/hero-glow.png" as="image">
@@ -40,8 +42,8 @@ fbq('track', 'PageView');
   --border:   #2a352a;
   --border2:  #354035;
   --tx:  #e0e8e0;
-  --t2:  #b0bab0;
-  --t3:  #7a8a7a;
+  --t2:  #c8d0c8;
+  --t3:  #8a9a8a;
   --t4:  #4a5a4a;
   --neon:     #00ff6a;
   --neon-dim: rgba(0,255,106,.15);
@@ -72,7 +74,7 @@ body::after {
 }
 
 /* ═══ FONT SHORTHANDS ═══ */
-.bc { font-family:'Barlow Condensed',sans-serif }
+.bc { font-family:'Outfit',sans-serif }
 .mn { font-family:'IBM Plex Mono',monospace }
 .sn { font-family:'DM Sans',sans-serif }
 
@@ -346,6 +348,93 @@ a.btn { display:block; }
   padding:10px 20px;
   font-size:12px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DEV THEME SWITCHER - Delete before production
+   ═══════════════════════════════════════════════════════════════════ */
+.dev-theme-toggle {
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  background:rgba(0,0,0,0.8);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform 0.3s ease, background 0.2s;
+}
+.dev-theme-toggle:hover { background:rgba(0,0,0,0.9); }
+.dev-theme-toggle.open { transform:rotate(90deg); }
+.dev-theme-toggle svg { width:20px; height:20px; fill:#fff; }
+
+.dev-theme-panel {
+  position:fixed;
+  bottom:140px;
+  right:20px;
+  z-index:9998;
+  width:260px;
+  background:rgba(10,15,10,0.95);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:16px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity 0.2s, visibility 0.2s, transform 0.2s;
+}
+.dev-theme-panel.open {
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.dev-theme-panel h4 {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#8a9a8a;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  margin-bottom:8px;
+}
+.dev-theme-panel select {
+  width:100%;
+  padding:10px 12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;
+  color:#e0e8e0;
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;
+  cursor:pointer;
+  margin-bottom:16px;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a9a8a'%3E%3Cpath d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+}
+.dev-theme-panel select:focus { outline:none; border-color:rgba(255,255,255,0.2); }
+.dev-theme-panel select:last-child { margin-bottom:0; }
+
+/* Version overrides */
+[data-version="original"] .bc { font-family:'Barlow Condensed',sans-serif !important; }
+
+/* Background theme overrides - Charcoal/Amber */
+[data-bg-theme="charcoal"] { --bg:#0f0d0a; --bg2:#14120e; --bg3:#1a1813; --surface:#242118; --border:#35302a; --neon:#ffb84a; --neon-dim:rgba(255,184,74,.15); --neon-lo:rgba(255,184,74,.06); }
+[data-bg-theme="charcoal"] .parallax-layer-1 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-01-5RCKCTBiNZ3J3zi5uh2u3Z.png') !important; }
+[data-bg-theme="charcoal"] .parallax-layer-2 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-02-N5UhsgJrxPonWYxbNAWoXF.png') !important; }
+[data-bg-theme="charcoal"] .parallax-layer-3 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-03-gR9ybtoB6GqYcP6gYC3pVx.png') !important; }
+
+/* Background theme overrides - Sage */
+[data-bg-theme="sage"] { --bg:#0d0f0a; --bg2:#11140e; --bg3:#161a13; --surface:#1e231a; --border:#2e352a; --neon:#00ff6a; --neon-dim:rgba(0,255,106,.15); --neon-lo:rgba(0,255,106,.06); }
+[data-bg-theme="sage"] .parallax-layer-1 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-sage-01-nPzLhkSjMkaRpR959LXUdA.png') !important; }
+[data-bg-theme="sage"] .parallax-layer-2 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-sage-02-VaZUfzpZDqtBqfTSWyqS6k.png') !important; }
+[data-bg-theme="sage"] .parallax-layer-3 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-sage-03-3aVLHzbBQBbZDvJMT2vdv3.png') !important; }
+
 </style>
 </head>
 <body>
@@ -365,10 +454,10 @@ a.btn { display:block; }
   </div>
 
   <!-- ═══ HERO SECTION ═══ -->
-  <h1 class="bc" style="font-size:30px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px">
+  <h1 class="bc" style="font-size:26px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px">
     Tau nereikia daugiau informacijos.
   </h1>
-  <h2 class="bc" style="font-size:30px;font-weight:800;color:var(--neon);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px">
+  <h2 class="bc" style="font-size:26px;font-weight:800;color:var(--neon);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px">
     Tau tereikia išgirsti save.
   </h2>
 
@@ -386,12 +475,12 @@ a.btn { display:block; }
 
 
   <!-- ═══ PAIN SECTION ═══ -->
-  <h2 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:8px">Kai &bdquo;ant popieriaus&ldquo; viskas gerai&hellip;</h2>
-  <h3 class="bc fade-in" style="font-size:28px;font-weight:800;color:var(--t3);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:28px">Bet iš tikrųjų nieko gero</h3>
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:8px">Kai &bdquo;ant popieriaus&ldquo; viskas gerai&hellip;</h2>
+  <h3 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--t3);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:28px">Bet iš tikrųjų nieko gero</h3>
 
   <div class="fade-in glass" style="padding:20px;margin-bottom:24px">
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:12px">Tu žinai, ką &bdquo;reikėtų&ldquo; daryti &mdash; turbūt skaitei saviugdos knygas, žiūrėjai video YouTube, gal net buvai pas psichologą. Bet vis tiek jauti, kad <span style="color:var(--neon);font-weight:500">kažkas ne taip.</span> Galbūt net pradedi abejoti, ar išvis kada nors bus kitaip.</p>
-    <p class="sn" style="font-size:14px;color:var(--t3);font-style:italic">Tai ne apie tingėjimą, ir ne, tavęs nereikia taisyti.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);font-style:italic">Tai ne apie tingėjimą, ir ne, tavęs nereikia taisyti.</p>
   </div>
 
   <!-- Hero glow image -->
@@ -412,7 +501,7 @@ a.btn { display:block; }
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:16px">Gyvename sistemoje, kuri nebuvo sukurta aiškumui.</p>
     <p class="sn" style="font-size:15px;color:var(--t2);line-height:1.85;margin-bottom:16px">Ji buvo sukurta <span style="color:var(--neon);font-weight:500">greičiui, stimuliacijai ir reakcijoms išgauti.</span></p>
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:12px">Telefonas pypsi 80 kartų per dieną. Naujienos sukonstruotos taip, kad sukeltų pyktį ir baimę. Kiekviena programėlė optimizuota vienam tikslui &mdash; laikyti tavo dėmesį nuolatinėje tylios įtampos būsenoje.</p>
-    <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.85">Dienos pabaigoje tavo smegenys apdoroja daugiau informacijos, nei tavo proseneliams tekdavo per mėnesį.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;font-style:italic">Dienos pabaigoje tavo smegenys apdoroja daugiau informacijos, nei tavo proseneliams tekdavo per mėnesį.</p>
   </div>
 
   <div class="fade-in" style="margin-bottom:24px">
@@ -420,7 +509,7 @@ a.btn { display:block; }
   </div>
 
   <div class="fade-in glass" style="padding:20px;margin-bottom:40px">
-    <p class="sn" style="font-size:14px;color:var(--t3);line-height:1.85;margin-bottom:12px;font-style:italic">Tai nėra sąmokslas. Niekas to neplanavo (greičiausiai).</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:12px;font-style:italic">Tai nėra sąmokslas. Niekas to neplanavo (greičiausiai).</p>
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85">Bet galiausiai &mdash; koks skirtumas, nes tai vis tiek stumia tave tiksliai <span style="color:var(--neon);font-weight:500">priešinga kryptimi</span> nuo to vienintelio dalyko, kuris gali iš tikrųjų padėti.</p>
   </div>
 
@@ -433,7 +522,7 @@ a.btn { display:block; }
   <div class="fade-in" style="display:flex;align-items:center;gap:0;margin-bottom:20px">
     <img src="images/Lukas img no bckrnd.png" alt="Lukas" style="width:180px;height:auto;flex-shrink:0;margin-right:-20px">
     <div style="margin-top:-40px">
-      <p class="bc" style="font-size:32px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:4px">Lukas K., <span style="font-weight:700;color:var(--t2)">M.D.</span></p>
+      <p class="bc" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:4px;white-space:nowrap">Lukas K., <span style="font-weight:700;color:var(--t2)">M.D.</span></p>
       <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.08em;margin-bottom:2px">Medicinos Gydytojas</p>
       <p class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em">Lietuva &ndash; Šveicarija</p>
     </div>
@@ -500,8 +589,8 @@ a.btn { display:block; }
 
   <!-- ═══ SESSION CTA ═══ -->
 
-  <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:4px">Viskas prasideda nuo</h2>
-  <h2 class="bc fade-in" style="font-size:32px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;text-align:center;margin-bottom:28px">vieno pokalbio.</h2>
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;margin-bottom:4px">Viskas prasideda nuo</h2>
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;margin-bottom:28px">vieno pokalbio.</h2>
 
   <!-- Session card -->
   <div class="fade-in glass-strong" style="margin-bottom:24px;overflow:hidden">
@@ -510,7 +599,6 @@ a.btn { display:block; }
       <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.04em">60 min · 1 : 1</p>
     </div>
     <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
-      <p class="sn" style="font-size:12px;color:var(--t4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;font-weight:500">Turinys ir kas apimama</p>
       <div style="display:flex;flex-direction:column;gap:10px">
         <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--neon);font-size:10px;margin-top:3px;flex-shrink:0">&#9654;</span><p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Kur tu iš tikrųjų esi dabartiniame etape</p></div>
         <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--neon);font-size:10px;margin-top:3px;flex-shrink:0">&#9654;</span><p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Kas tau šiuo metu svarbiausia</p></div>
@@ -519,7 +607,7 @@ a.btn { display:block; }
     </div>
     <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
       <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.75;margin-bottom:6px">Po pokalbio išeisi su daugiau aiškumo, lengvumo ir vidinės ramybės pojūčiu dėl sekančių žingsnių.</p>
-      <p class="sn" style="font-size:13px;color:var(--t3);line-height:1.75;font-style:italic">Vieni nusprendžia toliau judėti patys. Kiti renkasi tęsti darbą kartu, norėdami judėti greičiau.</p>
+      <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75;font-style:italic">Vieni nusprendžia toliau judėti patys. Kiti renkasi tęsti darbą kartu, norėdami judėti greičiau.</p>
     </div>
     <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;background:var(--neon-lo)">
       <span style="display:flex;align-items:baseline;gap:10px"><span class="bc" style="font-size:34px;font-weight:400;color:var(--tx);line-height:1">&euro;57</span><span class="bc" style="font-size:28px;font-weight:400;color:var(--t3);text-decoration:line-through">&euro;95</span></span>
@@ -539,25 +627,25 @@ a.btn { display:block; }
   <!-- Testimonial 1 -->
   <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Beveik metus sukausi ratais dėl vieno sprendimo dėl karjeros. Pliusų-minusų sąrašai, pokalbiai su draugais, nemiga trečią nakties, galvoje vis tie patys scenarijai. Sesijoje paaiškėjo, kad pats sprendimas niekada ir nebuvo problema, aš tiesiog vengiau to, ką jis reiškė apie mane. Kai tai &bdquo;išlindo į dienos šviesą&ldquo;, atsakymas irgi tapo labai aiškus. Gėdingai akivaizdus, jei atvirai.&rdquo;</p>
-    <span class="mn" style="font-size:10px;color:var(--t3)">Tomas, 34 &middot; Vilnius</span>
+    <span class="mn" style="font-size:15px;color:var(--t3)">Tomas, 34 &middot; Vilnius</span>
   </div>
 
   <!-- Testimonial 2 -->
   <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Trejus metus gyvenau su tokiu tyliu foniniu nerimu, kurio negalėjau niekam paaiškinti. Net ne panikos priepuoliai, nieko dramatiško, tiesiog nuolatinis zyzimas, dėl kurio viskas buvo sunkiau, nei turėtų būti. Per darbo procesą pavyko atsekti jį iki konkrečios priežasties. Jis nedingo per naktį, bet pirmą kartą tiksliai žinojau, su kuo turiu reikalą.&rdquo;</p>
-    <span class="mn" style="font-size:10px;color:var(--t3)">Ieva, 21 &middot; Kaunas</span>
+    <span class="mn" style="font-size:15px;color:var(--t3)">Ieva, 21 &middot; Kaunas</span>
   </div>
 
   <!-- Testimonial 3 -->
   <div class="fade-in glass" style="padding:16px;margin-bottom:24px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Vis kartojosi tas pats. Kitas darbas, kiti santykiai, bet viskas apie tą patį. Galvojau, kad tiesiog toks esu. Pasirodė, kad tai ne charakteris, o konkretus elgesio ir mąstymo šablonas. Dabar jį pagaunu dar sakinio viduryje.&rdquo;</p>
-    <span class="mn" style="font-size:10px;color:var(--t3)">Marius, 42 &middot; Klaipėda</span>
+    <span class="mn" style="font-size:15px;color:var(--t3)">Marius, 42 &middot; Klaipėda</span>
   </div>
 
   <!-- Testimonial 4 -->
   <div class="fade-in glass" style="padding:16px;margin-bottom:40px;border-left:2px solid var(--neon)">
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:8px">&bdquo;Net nesupratau, koks jis sunkus, kol jo nebebuvo. Tiesiog buvau pripratusi&nbsp;&mdash; tas suspaudimas, nuovargis, jausmas, kad kažkas ne taip. Tik kai pagaliau leidau sau jaustis &bdquo;normaliai&ldquo;, supratau, kokį svorį nešiojau.&rdquo;</p>
-    <span class="mn" style="font-size:10px;color:var(--t3)">Greta, 31 &middot; Šiauliai</span>
+    <span class="mn" style="font-size:15px;color:var(--t3)">Greta, 31 &middot; Šiauliai</span>
   </div>
 
   <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" style="margin-bottom:40px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
@@ -567,11 +655,13 @@ a.btn { display:block; }
 
   <!-- ═══ HOW IT WORKS ═══ -->
 
-  <h3 class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px">Kaip tai veikia</h3>
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Kaip tai veikia</h2>
 
-  <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Prieš nuotolinį video susitikimą užpildysi diagnostinį klausimyną&nbsp;&mdash; struktūruotą anketą, kuri leis pokalbiui būti tikslingu.</p>
-  <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Pokalbio trukmė apie <span style="color:var(--tx);font-weight:500">1 val.</span> Formatas diagnostinis: bus klausiama, klausomasi, ir kartu dedami taškai ant i.</p>
-  <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.8;margin-bottom:40px">Pabaigoje jausi daugiau aiškumo&nbsp;&mdash; apie situaciją, kas tau svarbu, ir tolimesnę kryptį.</p>
+  <div class="fade-in glass" style="padding:20px;margin-bottom:40px">
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Prieš nuotolinį video susitikimą užpildysi diagnostinį klausimyną&nbsp;&mdash; struktūruotą anketą, kuri leis pokalbiui būti tikslingu.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Pokalbio trukmė apie <span style="color:var(--tx);font-weight:500">1 val.</span> Formatas diagnostinis: bus klausiama, klausomasi, ir kartu dedami taškai ant i.</p>
+    <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.8">Pabaigoje jausi daugiau aiškumo&nbsp;&mdash; apie situaciją, kas tau svarbu, ir tolimesnę kryptį.</p>
+  </div>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
 
@@ -580,7 +670,7 @@ a.btn { display:block; }
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 32px">
 
-  <h3 class="bc" style="font-size:22px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Dažniausiai užduodami klausimai</h3>
+  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Dažniausiai užduodami klausimai</h2>
 
   <div class="faq-list fade-in glass" style="padding:16px">
     <details class="faq-item">
@@ -695,6 +785,76 @@ a.btn { display:block; }
   window.addEventListener('scroll', updateStickyCta, { passive: true });
   updateStickyCta();
 
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     DEV THEME SWITCHER - Delete before production
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="dev-theme-toggle" id="dev-toggle">
+  <svg viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z"/></svg>
+</div>
+
+<div class="dev-theme-panel" id="dev-panel">
+  <h4>Background</h4>
+  <select id="bg-theme-select">
+    <option value="default">Dark Green (Current)</option>
+    <option value="sage">Sage</option>
+    <option value="charcoal">Charcoal / Amber</option>
+  </select>
+
+  <h4>Version</h4>
+  <select id="version-select">
+    <option value="current">Current (Outfit)</option>
+    <option value="original">Original (Barlow Condensed)</option>
+  </select>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('dev-toggle');
+  var panel = document.getElementById('dev-panel');
+  var bgSelect = document.getElementById('bg-theme-select');
+  var versionSelect = document.getElementById('version-select');
+  var html = document.documentElement;
+
+  // Load saved preferences
+  var savedBg = localStorage.getItem('dev-bg-theme') || 'default';
+  var savedVersion = localStorage.getItem('dev-version') || 'current';
+
+  bgSelect.value = savedBg;
+  versionSelect.value = savedVersion;
+
+  if (savedBg !== 'default') html.setAttribute('data-bg-theme', savedBg);
+  if (savedVersion !== 'current') html.setAttribute('data-version', savedVersion);
+
+  // Toggle panel
+  toggle.addEventListener('click', function() {
+    toggle.classList.toggle('open');
+    panel.classList.toggle('open');
+  });
+
+  // Background theme change
+  bgSelect.addEventListener('change', function() {
+    var value = this.value;
+    localStorage.setItem('dev-bg-theme', value);
+    if (value === 'default') {
+      html.removeAttribute('data-bg-theme');
+    } else {
+      html.setAttribute('data-bg-theme', value);
+    }
+  });
+
+  // Version change
+  versionSelect.addEventListener('change', function() {
+    var value = this.value;
+    localStorage.setItem('dev-version', value);
+    if (value === 'current') {
+      html.removeAttribute('data-version');
+    } else {
+      html.setAttribute('data-version', value);
+    }
+  });
 })();
 </script>
 
