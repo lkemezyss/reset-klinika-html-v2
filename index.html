@@ -41,7 +41,7 @@ fbq('track', 'PageView');
   --border:   #2a352a;
   --border2:  #354035;
   --tx:  #e0e8e0;
-  --t2:  #c8d0c8;
+  --t2:  #d6ded6;
   --t3:  #8a9a8a;
   --t4:  #4a5a4a;
   --neon:     #00ff6a;
@@ -285,19 +285,23 @@ a.btn { display:block; }
   background-position:0 40%;
 }
 
+/* ═══ TEXT GLOW ═══ */
+.glow { text-shadow:0 0 6px rgba(255,255,255,0.35), 0 0 12px rgba(255,255,255,0.15); }
+.glow-neon { text-shadow:0 0 8px var(--neon-dim), 0 0 16px var(--neon-dim); }
+
 /* ═══ GLASSMORPHISM ═══ */
 .glass {
-  background:rgba(255,255,255,0.03);
+  background:rgba(255,255,255,0.05);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
   border-radius:12px;
 }
 .glass-strong {
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.07);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.10);
   border-radius:12px;
   box-shadow:0 8px 32px rgba(0,0,0,0.2);
 }
@@ -338,8 +342,9 @@ a.btn { display:block; }
   color:var(--t2);
 }
 .sticky-cta-text strong {
-  color:var(--tx);
+  color:var(--neon);
   font-weight:500;
+  text-shadow:0 0 8px var(--neon-dim), 0 0 16px var(--neon-dim);
 }
 .sticky-cta .btn {
   flex-shrink:0;
@@ -421,7 +426,7 @@ a.btn { display:block; }
 
 
 /* Background theme overrides - Charcoal/Amber */
-[data-bg-theme="charcoal"] { --bg:#0f0d0a; --bg2:#14120e; --bg3:#1a1813; --surface:#242118; --border:#35302a; --neon:#ffb84a; --neon-dim:rgba(255,184,74,.15); --neon-lo:rgba(255,184,74,.06); }
+[data-bg-theme="charcoal"] { --bg:#0f0d0a; --bg2:#14120e; --bg3:#1a1813; --surface:#242118; --border:#35302a; --neon:#ffb84a; --neon-dim:rgba(255,184,74,.15); --neon-lo:rgba(255,184,74,.06); --tx:#e8e0d8; --t2:#d6cec6; --t3:#9a8e82; }
 [data-bg-theme="charcoal"] .parallax-layer-1 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-01-4Z27jjZa6DyoeFhLuYQ5z3.webp') !important; }
 [data-bg-theme="charcoal"] .parallax-layer-2 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-02-8SpsqGu2ZH6KrovmcUHviC.webp') !important; }
 [data-bg-theme="charcoal"] .parallax-layer-3 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-03-X8TupJAi7BLFD8dsYuZYka.webp') !important; }
@@ -445,11 +450,6 @@ a.btn { display:block; }
 
 <div class="page">
 
-  <!-- ═══ TOP BAR ═══ -->
-  <div class="topbar">
-    <span class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.15em">Reset Klinika</span>
-  </div>
-
   <!-- ═══ HERO SECTION ═══ -->
   <h1 class="bc" style="font-size:26px;font-weight:800;color:var(--tx);line-height:1.1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px">
     Tau nereikia daugiau informacijos.
@@ -462,11 +462,11 @@ a.btn { display:block; }
 
   <p class="sn" style="font-size:16px;color:#fff;font-weight:500;margin-bottom:16px">Pažįstama?</p>
 
-  <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.8;margin-bottom:28px">Asmeninė diagnostinė sesija &mdash; <span style="color:var(--neon);font-weight:500">pirmas žingsnis ramybės link.</span></p>
+  <p class="sn glow" style="font-size:15px;color:var(--tx);line-height:1.8;margin-bottom:28px">1:1 diagnostinė sesija &mdash; <span class="glow-neon" style="color:var(--neon);font-weight:500">žingsnis aiškumo link.</span></p>
 
   <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" style="margin-bottom:16px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
 
-  <p class="mn" style="font-size:11px;color:var(--t2);text-align:center;letter-spacing:.1em;text-transform:uppercase;margin-bottom:40px">1:1 su med. gyd. &nbsp;·&nbsp; Vietų skaičius ribotas</p>
+  <p class="mn" style="font-size:11px;color:var(--t2);text-align:center;letter-spacing:.1em;text-transform:uppercase;margin-bottom:40px">1:1 su med. gyd. &nbsp;⚕&nbsp; Vietų skaičius ribotas</p>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
 
@@ -517,10 +517,10 @@ a.btn { display:block; }
   <!-- Photo + name (serves as headline) -->
   <div class="fade-in" style="display:flex;align-items:center;gap:0;margin-bottom:20px">
     <img src="images/Lukas img no bckrnd.png" alt="Lukas" style="width:180px;height:auto;flex-shrink:0;margin-right:-20px">
-    <div style="margin-top:-40px">
+    <div style="margin-top:-40px;text-align:right">
       <p class="bc" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:4px;white-space:nowrap">Lukas K., <span style="font-weight:700;color:var(--t2)">M.D.</span></p>
-      <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.08em;margin-bottom:2px">Medicinos Gydytojas</p>
-      <p class="mn" style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em">Lietuva &ndash; Šveicarija</p>
+      <p class="mn" style="font-size:14px;color:var(--tx);letter-spacing:.08em;margin-bottom:2px;text-transform:uppercase">Medicinos Gydytojas</p>
+      <p class="mn" style="font-size:13px;color:var(--t2);letter-spacing:.08em">Lietuva &ndash; Šveicarija</p>
     </div>
   </div>
 
@@ -528,15 +528,15 @@ a.btn { display:block; }
   <div class="fade-in glass" style="padding:14px 16px;margin-bottom:24px">
     <div style="display:flex;gap:10px;align-items:center;margin-bottom:9px">
       <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="18" rx="3" fill="#D52B1E"/><rect x="7" y="3" width="4" height="12" rx=".8" fill="#fff"/><rect x="3" y="7" width="12" height="4" rx=".8" fill="#fff"/></svg>
-      <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4">Darbo stažas psichiatrijos srityje Šveicarijoje</span>
+      <span class="sn" style="font-size:12px;color:var(--tx);line-height:1.4">Darbo stažas psichiatrijos srityje Šveicarijoje</span>
     </div>
     <div style="display:flex;gap:10px;align-items:center;margin-bottom:9px">
       <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="6" rx="2" ry="2" fill="#000"/><rect y="6" width="18" height="6" fill="#D00"/><rect y="12" width="18" height="6" rx="2" ry="2" fill="#FFCE00"/></svg>
-      <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4">Miuncheno kognityvinės elgesio terapijos kursai</span>
+      <span class="sn" style="font-size:12px;color:var(--tx);line-height:1.4">Miuncheno kognityvinės elgesio terapijos kursai</span>
     </div>
     <div style="display:flex;gap:10px;align-items:center">
       <svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><rect width="18" height="6" rx="2" ry="2" fill="#FDB913"/><rect y="6" width="18" height="6" fill="#006A44"/><rect y="12" width="18" height="6" rx="2" ry="2" fill="#C1272D"/></svg>
-      <span class="sn" style="font-size:12px;color:var(--t2);line-height:1.4"><span style="color:var(--tx);font-weight:500">637+</span> pravestų asmeninių sesijų</span>
+      <span class="sn" style="font-size:12px;color:var(--tx);line-height:1.4"><span style="font-weight:500">637+</span> pravestų asmeninių sesijų</span>
     </div>
   </div>
 
@@ -545,11 +545,11 @@ a.btn { display:block; }
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;font-style:italic">To &bdquo;dalyko&ldquo; buvau priverstas ieškoti ir aš &mdash; <span style="color:var(--neon);font-weight:500">leisk paaiškinti.</span></p>
   </div>
 
-  <div class="fade-in" style="margin-bottom:24px">
+  <div class="fade-in glass" style="padding:18px;margin-bottom:24px">
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:16px">Mane visada žavėjo žmogaus kūno ir proto vientisas veikimas. Tikriausiai tas smalsumas ir atvedė į mediciną. Intensyvus darbo, studijų ir vidinių paieškų maratonas nuvedė mane ten, kur nereikėjo eiti.</p>
     <p class="sn" style="font-size:15px;color:var(--tx);line-height:1.85;margin-bottom:16px"><span style="color:var(--neon);font-weight:500">Ir tada buvau išbandytas pats.</span></p>
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:16px">Visa tai baigėsi perdegimu, panikos atakomis ir vidine krize, kurios niekada anksčiau nebuvau patyręs.</p>
-    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85">Mano susidomėjimas ir paieškos nustojo būti teorinės. <span style="color:var(--tx);font-weight:500">Rasti atsakymus tapo būtinybe.</span></p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.85">Mano susidomėjimas ir paieškos nustojo būti teorinės. <span class="glow" style="color:var(--tx);font-weight:500">Rasti atsakymus tapo būtinybe.</span></p>
   </div>
 
   <div class="fade-in" style="margin-bottom:24px">
@@ -586,13 +586,13 @@ a.btn { display:block; }
   <!-- ═══ SESSION CTA ═══ -->
 
   <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;margin-bottom:4px">Viskas prasideda nuo</h2>
-  <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;margin-bottom:28px">vieno pokalbio.</h2>
+  <h2 class="bc fade-in glow-neon" style="font-size:26px;font-weight:800;color:var(--neon);text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;margin-bottom:28px">vieno pokalbio.</h2>
 
   <!-- Session card -->
   <div class="fade-in glass-strong" style="margin-bottom:24px;overflow:hidden">
     <div style="padding:16px 20px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-      <p class="mn" style="font-size:12px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em;font-weight:500">Diagnostinė sesija</p>
-      <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.04em">60 min · 1 : 1</p>
+      <p class="mn glow-neon" style="font-size:12px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em;font-weight:500">Diagnostinė sesija</p>
+      <p class="mn glow" style="font-size:12px;color:var(--tx);letter-spacing:.04em">60 min · 1 : 1</p>
     </div>
     <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
       <div style="display:flex;flex-direction:column;gap:10px">
@@ -606,12 +606,14 @@ a.btn { display:block; }
       <p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75;font-style:italic">Vieni nusprendžia toliau judėti patys. Kiti renkasi tęsti darbą kartu, norėdami judėti greičiau.</p>
     </div>
     <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;background:var(--neon-lo)">
-      <span style="display:flex;align-items:baseline;gap:8px"><span class="bc" style="font-size:24px;font-weight:500;color:var(--tx);line-height:1">&euro;57</span><span class="bc" style="font-size:20px;font-weight:400;color:var(--t3);text-decoration:line-through">&euro;95</span></span>
+      <span style="display:flex;align-items:baseline;gap:8px"><span class="bc glow" style="font-size:24px;font-weight:500;color:var(--tx);line-height:1">&euro;57</span><span class="bc" style="font-size:20px;font-weight:400;color:var(--t3);text-decoration:line-through">&euro;95</span></span>
       <p class="mn" style="font-size:12px;color:var(--t2);letter-spacing:.08em;text-transform:uppercase">Vietų skaičius ribotas</p>
     </div>
   </div>
 
-  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" id="cta-main" style="margin-bottom:40px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
+  <a href="https://calendly.com/resetklinika_gyd_lukas/reset_klinika" class="btn btn-big" id="cta-main" style="margin-bottom:16px" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout')">Rezervuoti laiką</a>
+
+  <p class="mn" style="font-size:11px;color:var(--t2);text-align:center;letter-spacing:.1em;text-transform:uppercase;margin-bottom:40px">1:1 su med. gyd. &nbsp;⚕&nbsp; Vietų skaičius ribotas</p>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:0 0 40px">
 
@@ -655,7 +657,7 @@ a.btn { display:block; }
 
   <div class="fade-in glass" style="padding:20px;margin-bottom:40px">
     <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Prieš nuotolinį video susitikimą užpildysi diagnostinį klausimyną&nbsp;&mdash; struktūruotą anketą, kuri leis pokalbiui būti tikslingu.</p>
-    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Pokalbio trukmė apie <span style="color:var(--tx);font-weight:500">1 val.</span> Formatas diagnostinis: bus klausiama, klausomasi, ir kartu dedami taškai ant i.</p>
+    <p class="sn" style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">Pokalbio trukmė apie <span class="glow" style="color:var(--tx);font-weight:500">1 val.</span> Formatas diagnostinis: bus klausiama, klausomasi, ir kartu dedami taškai ant i.</p>
     <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.8">Pabaigoje jausi daugiau aiškumo&nbsp;&mdash; apie situaciją, kas tau svarbu, ir tolimesnę kryptį.</p>
   </div>
 
@@ -669,10 +671,6 @@ a.btn { display:block; }
   <h2 class="bc fade-in" style="font-size:26px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;letter-spacing:-.01em;margin-bottom:24px">Dažniausiai užduodami klausimai</h2>
 
   <div class="faq-list fade-in glass" style="padding:16px">
-    <details class="faq-item">
-      <summary><span class="sn" style="font-size:14px;color:var(--tx);font-weight:500">Kuo tai skiriasi nuo terapijos?</span><span class="faq-icon">+</span></summary>
-      <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">Terapija dažniausiai yra atviras procesas&nbsp;&mdash; savaitinės sesijos mėnesiais ar metais, be aiškios krypties ar galutinio taško. Čia - kiek kitaip. Tai struktūruotas diagnostinis pokalbis su konkrečiu tikslu: nustatyti, kas iš tikrųjų vyksta po paviršiumi, ir duoti tau aiškų, apčiuopiamą supratimą, su kuriuo gali judėti toliau.</p></div>
-    </details>
     <details class="faq-item">
       <summary><span class="sn" style="font-size:14px;color:var(--tx);font-weight:500">Kaip sesija vyksta praktiškai?</span><span class="faq-icon">+</span></summary>
       <div class="faq-a"><p class="sn" style="font-size:13px;color:var(--t2);line-height:1.75">Pirmiausiai po rezervacijos el. paštu gausi struktūruotą diagnostinį klausimyną. Jis padės suformuluoti, kas vyksta, ir leis pačiai sesijai būti produktyvesnei. Tuomet prisijungsi video skambučiui naudodamas nuorodą rezervuotu laiku.</p></div>
