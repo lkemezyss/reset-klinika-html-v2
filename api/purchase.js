@@ -10,6 +10,8 @@ export default async function handler(req, res) {
   // CORS headers - restrict to allowed origins
   const allowedOrigins = [
     'https://reset-klinika.vercel.app',
+    'https://reset-klinika-html-v2.vercel.app',
+    'https://reset-klinika-lt.vercel.app',
     'https://resetklinika.lt',
     'http://localhost:3000'
   ];

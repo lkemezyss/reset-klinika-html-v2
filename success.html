@@ -2,7 +2,7 @@
 <html lang="lt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Reset Klinika — Rezervacija patvirtinta</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -59,71 +59,130 @@ if (!sessionStorage.getItem('purchase_tracked')) {
 
 <style>
 :root {
-  --bg: #0a0f0a;
-  --tx: #e0e8e0;
-  --t2: #b0bab0;
-  --t3: #7a8a7a;
-  --t4: #4a5a4a;
-  --neon: #00ff6a;
-  --neon-lo: rgba(0,255,106,.06);
-  --border: #2a352a;
+  --bg: #0f0d0a;
+  --bg2: #14120e;
+  --surface: #242118;
+  --tx: #e8e0d8;
+  --t2: #d6cec6;
+  --t3: #9a8e82;
+  --t4: #6a6058;
+  --neon: #ffb84a;
+  --neon-dim: rgba(255,184,74,.15);
+  --neon-lo: rgba(255,184,74,.06);
+  --border: #35302a;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
 body {
-  background:var(--bg);
-  font-family:'DM Sans',sans-serif;
-  color:var(--t2);
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--t2);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Static cloud background */
+.cloud-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.cloud-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+.cloud-layer-1 {
+  background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-01-4Z27jjZa6DyoeFhLuYQ5z3.webp');
+  opacity: 0.6;
+}
+.cloud-layer-2 {
+  background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-02-8SpsqGu2ZH6KrovmcUHviC.webp');
+  opacity: 0.4;
+}
+
 .wrap {
-  max-width:480px;
-  width:100%;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
-.bc { font-family:'Barlow Condensed',sans-serif }
-.mn { font-family:'IBM Plex Mono',monospace }
-.sn { font-family:'DM Sans',sans-serif }
+
+.bc { font-family: 'Barlow Condensed', sans-serif; }
+.mn { font-family: 'IBM Plex Mono', monospace; }
+.sn { font-family: 'DM Sans', sans-serif; }
+
+.glass {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.glow {
+  text-shadow: 0 0 8px rgba(255,184,74,0.4), 0 0 16px rgba(255,184,74,0.2);
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:40px">
-    <span style="width:8px;height:8px;border-radius:50%;background:var(--neon);display:inline-block;animation:pulse 2s ease-in-out infinite"></span>
-    <span class="mn" style="font-size:11px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em">Patvirtinta</span>
-  </div>
-
-  <h1 class="bc" style="font-size:36px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:12px">
-    Tavo sesija <span style="color:var(--neon)">rezervuota.</span>
-  </h1>
-
-  <p class="sn" style="font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:32px">
-    Artimiausiu metu gausi el. laišką su diagnostiniu klausimynu ir visa reikalinga informacija.
-  </p>
-
-  <div style="border:1px solid var(--border);padding:20px;margin-bottom:24px">
-    <p class="mn" style="font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Kiti žingsniai</p>
-    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">
-      <span style="color:var(--neon);font-size:10px;margin-top:4px">1</span>
-      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Patikrink el. paštą (ir spam aplanką)</p>
-    </div>
-    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">
-      <span style="color:var(--neon);font-size:10px;margin-top:4px">2</span>
-      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Užpildyk diagnostinį klausimyną</p>
-    </div>
-    <div style="display:flex;gap:10px;align-items:flex-start">
-      <span style="color:var(--neon);font-size:10px;margin-top:4px">3</span>
-      <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Prisijunk nurodytu laiku per video nuorodą</p>
-    </div>
-  </div>
-
+<div class="cloud-bg">
+  <div class="cloud-layer cloud-layer-1"></div>
+  <div class="cloud-layer cloud-layer-2"></div>
 </div>
 
-<style>
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-</style>
+<div class="wrap">
+  <div class="glass">
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:32px">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--neon);display:inline-block;animation:pulse 2s ease-in-out infinite"></span>
+      <span class="mn" style="font-size:11px;color:var(--neon);text-transform:uppercase;letter-spacing:.12em">Patvirtinta</span>
+    </div>
+
+    <h1 class="bc" style="font-size:38px;font-weight:800;color:var(--tx);text-transform:uppercase;line-height:1.1;margin-bottom:16px">
+      Tavo sesija <span class="glow" style="color:var(--neon)">rezervuota.</span>
+    </h1>
+
+    <p class="sn" style="font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:32px">
+      Artimiausiu metu gausi el. laišką su diagnostiniu klausimynu ir visa reikalinga informacija.
+    </p>
+
+    <div style="border-top:1px solid var(--border);padding-top:20px">
+      <p class="mn" style="font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px">Kiti žingsniai</p>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
+        <span class="mn" style="color:var(--neon);font-size:11px;margin-top:2px">1</span>
+        <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Patikrink el. paštą (ir spam aplanką)</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
+        <span class="mn" style="color:var(--neon);font-size:11px;margin-top:2px">2</span>
+        <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Užpildyk diagnostinį klausimyną</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <span class="mn" style="color:var(--neon);font-size:11px;margin-top:2px">3</span>
+        <p class="sn" style="font-size:14px;color:var(--tx);line-height:1.6">Prisijunk nurodytu laiku per video nuorodą</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
