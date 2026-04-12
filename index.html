@@ -352,78 +352,6 @@ a.btn { display:block; }
   font-size:12px;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   DEV THEME SWITCHER - Delete before production
-   ═══════════════════════════════════════════════════════════════════ */
-.dev-theme-toggle {
-  position:fixed;
-  bottom:80px;
-  right:20px;
-  z-index:9999;
-  width:44px;
-  height:44px;
-  background:rgba(0,0,0,0.8);
-  border:1px solid rgba(255,255,255,0.2);
-  border-radius:50%;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:transform 0.3s ease, background 0.2s;
-}
-.dev-theme-toggle:hover { background:rgba(0,0,0,0.9); }
-.dev-theme-toggle.open { transform:rotate(90deg); }
-.dev-theme-toggle svg { width:20px; height:20px; fill:#fff; }
-
-.dev-theme-panel {
-  position:fixed;
-  bottom:140px;
-  right:20px;
-  z-index:9998;
-  width:260px;
-  background:rgba(10,15,10,0.95);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:12px;
-  padding:16px;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:opacity 0.2s, visibility 0.2s, transform 0.2s;
-}
-.dev-theme-panel.open {
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-.dev-theme-panel h4 {
-  font-family:'IBM Plex Mono',monospace;
-  font-size:10px;
-  color:#8a9a8a;
-  text-transform:uppercase;
-  letter-spacing:0.1em;
-  margin-bottom:8px;
-}
-.dev-theme-panel select {
-  width:100%;
-  padding:10px 12px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:8px;
-  color:#e0e8e0;
-  font-family:'DM Sans',sans-serif;
-  font-size:13px;
-  cursor:pointer;
-  margin-bottom:16px;
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a9a8a'%3E%3Cpath d='M6 8L2 4h8z'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 12px center;
-}
-.dev-theme-panel select:focus { outline:none; border-color:rgba(255,255,255,0.2); }
-.dev-theme-panel select:last-child { margin-bottom:0; }
-
-
 /* Background theme overrides - Charcoal/Amber */
 [data-bg-theme="charcoal"] { --bg:#0f0d0a; --bg2:#14120e; --bg3:#1a1813; --surface:#242118; --border:#35302a; --neon:#ffb84a; --neon-dim:rgba(255,184,74,.15); --neon-lo:rgba(255,184,74,.06); --tx:#e8e0d8; --t2:#d6cec6; --t3:#9a8e82; }
 [data-bg-theme="charcoal"] .parallax-layer-1 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-charcoal-amber-v2-01-4Z27jjZa6DyoeFhLuYQ5z3.webp') !important; }
@@ -445,19 +373,6 @@ a.btn { display:block; }
 [data-bg-theme="navy"] img[src*="s05-art-2.png"] { content:url('images/s05-art-2-navy.png'); }
 [data-bg-theme="navy"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-navy.png') !important; }
 [data-bg-theme="navy"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(0,212,255,0.5) 0%, rgba(0,212,255,0.25) 10%, rgba(0,212,255,0.08) 22%, transparent 40%); }
-
-/* Beige / Gold theme */
-[data-bg-theme="beige"] { --bg:#12100c; --bg2:#18150f; --bg3:#1e1a14; --surface:#28231a; --border:#3d3628; --neon:#d4a574; --neon-dim:rgba(212,165,116,.15); --neon-lo:rgba(212,165,116,.06); --tx:#f0e8e0; --t2:#dcd0c4; --t3:#a89888; }
-[data-bg-theme="beige"] .parallax-layer-1 { background-image:url('images/parallax-clouds-beige-01.png') !important; }
-[data-bg-theme="beige"] .parallax-layer-2 { background-image:url('images/parallax-clouds-beige-02.png') !important; }
-[data-bg-theme="beige"] .parallax-layer-3 { background-image:url('images/parallax-clouds-beige-03.png') !important; }
-[data-bg-theme="beige"] img[src*="hero-glow.png"] { content:url('images/hero-glow-amber.png'); }
-[data-bg-theme="beige"] img[src*="s05-art-1.png"] { content:url('images/s05-art-1-amber.png'); }
-[data-bg-theme="beige"] img[src*="s05-art-2.png"] { content:url('images/s05-art-2-amber.png'); }
-[data-bg-theme="beige"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-amber.png') !important; }
-[data-bg-theme="beige"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(212,165,116,0.5) 0%, rgba(212,165,116,0.25) 10%, rgba(212,165,116,0.08) 22%, transparent 40%); }
-[data-bg-theme="beige"] .glass { background:rgba(0,0,0,0.35); border-color:rgba(255,255,255,0.06); }
-[data-bg-theme="beige"] .glass-strong { background:rgba(0,0,0,0.45); }
 
 </style>
 </head>
@@ -802,72 +717,13 @@ a.btn { display:block; }
 })();
 </script>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     DEV THEME SWITCHER - Delete before production
-     ═══════════════════════════════════════════════════════════════════ -->
-<div class="dev-theme-toggle" id="dev-toggle">
-  <svg viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z"/></svg>
-</div>
-
-<div class="dev-theme-panel" id="dev-panel">
-  <h4>Background</h4>
-  <select id="bg-theme-select">
-    <option value="charcoal">Charcoal / Amber</option>
-    <option value="navy">Navy / Cyan</option>
-    <option value="beige">Beige / Gold</option>
-  </select>
-
-</div>
-
 <script>
 (function(){
-  var toggle = document.getElementById('dev-toggle');
-  var panel = document.getElementById('dev-panel');
-  var bgSelect = document.getElementById('bg-theme-select');
-  var html = document.documentElement;
-
-  // Check URL param first (for A/B testing via /v1, /v2, /v3)
   var urlParams = new URLSearchParams(window.location.search);
-  var urlTheme = urlParams.get('theme');
-  var isUrlLocked = urlTheme && urlTheme !== 'default';
-
-  // Determine theme: URL param > localStorage > default
-  var theme;
-  if (urlTheme) {
-    theme = urlTheme;
-  } else {
-    theme = localStorage.getItem('dev-bg-theme') || 'default';
+  var theme = urlParams.get('theme');
+  if (theme && theme !== 'default') {
+    document.documentElement.setAttribute('data-bg-theme', theme);
   }
-
-  // Apply theme
-  bgSelect.value = theme;
-  if (theme !== 'default') {
-    html.setAttribute('data-bg-theme', theme);
-  }
-
-  // If URL locked, disable dev panel selector
-  if (isUrlLocked) {
-    bgSelect.disabled = true;
-    bgSelect.title = 'Theme locked by URL';
-  }
-
-  // Toggle panel
-  toggle.addEventListener('click', function() {
-    toggle.classList.toggle('open');
-    panel.classList.toggle('open');
-  });
-
-  // Background theme change (only works if not URL locked)
-  bgSelect.addEventListener('change', function() {
-    if (isUrlLocked) return;
-    var value = this.value;
-    localStorage.setItem('dev-bg-theme', value);
-    if (value === 'default') {
-      html.removeAttribute('data-bg-theme');
-    } else {
-      html.setAttribute('data-bg-theme', value);
-    }
-  });
 })();
 </script>
 
