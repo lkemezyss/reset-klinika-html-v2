@@ -435,11 +435,16 @@ a.btn { display:block; }
 [data-bg-theme="charcoal"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-amber.png') !important; }
 [data-bg-theme="charcoal"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(255,184,74,0.5) 0%, rgba(255,184,74,0.25) 10%, rgba(255,184,74,0.08) 22%, transparent 40%); }
 
-/* Background theme overrides - Sage */
-[data-bg-theme="sage"] { --bg:#0d0f0a; --bg2:#11140e; --bg3:#161a13; --surface:#1e231a; --border:#2e352a; --neon:#00ff6a; --neon-dim:rgba(0,255,106,.15); --neon-lo:rgba(0,255,106,.06); }
-[data-bg-theme="sage"] .parallax-layer-1 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-sage-v2-01-Ktnn8ZKR7pfffPPoKgyi92.webp') !important; }
-[data-bg-theme="sage"] .parallax-layer-2 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-sage-v2-02-e8X6LfGWuWh55T3TV9uMPw.webp') !important; }
-[data-bg-theme="sage"] .parallax-layer-3 { background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663499984436/JwKFgmVALXYdDRMgTez2HE/parallax-clouds-sage-v2-03-fz3RDKNR8tFga7hspgPWME.webp') !important; }
+/* Navy / Cyan theme */
+[data-bg-theme="navy"] { --bg:#0a0d14; --bg2:#0e1219; --bg3:#131820; --surface:#1a2030; --border:#2a3548; --neon:#00d4ff; --neon-dim:rgba(0,212,255,.15); --neon-lo:rgba(0,212,255,.06); --tx:#e0e8f0; --t2:#c6d0dc; --t3:#8294a8; }
+[data-bg-theme="navy"] .parallax-layer-1 { background-image:url('images/parallax-clouds-navy-01.png') !important; }
+[data-bg-theme="navy"] .parallax-layer-2 { background-image:url('images/parallax-clouds-navy-02.png') !important; }
+[data-bg-theme="navy"] .parallax-layer-3 { background-image:url('images/parallax-clouds-navy-03.png') !important; }
+[data-bg-theme="navy"] img[src*="hero-glow.png"] { content:url('images/hero-glow-navy.png'); }
+[data-bg-theme="navy"] img[src*="s05-art-1.png"] { content:url('images/s05-art-1-navy.png'); }
+[data-bg-theme="navy"] img[src*="s05-art-2.png"] { content:url('images/s05-art-2-navy.png'); }
+[data-bg-theme="navy"] .img-animated .base[style*="hero-glow.png"] { background-image:url('images/hero-glow-navy.png') !important; }
+[data-bg-theme="navy"] .img-animated .glow { background:radial-gradient(circle at 56% 43%, rgba(0,212,255,0.5) 0%, rgba(0,212,255,0.25) 10%, rgba(0,212,255,0.08) 22%, transparent 40%); }
 
 </style>
 </head>
@@ -795,8 +800,8 @@ a.btn { display:block; }
   <h4>Background</h4>
   <select id="bg-theme-select">
     <option value="default">Dark Green (Current)</option>
-    <option value="sage">Sage</option>
     <option value="charcoal">Charcoal / Amber</option>
+    <option value="navy">Navy / Cyan</option>
   </select>
 
 </div>

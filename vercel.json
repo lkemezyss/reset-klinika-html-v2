@@ -7,7 +7,7 @@
   },
   "rewrites": [
     { "source": "/v1", "destination": "/index.html?theme=default" },
-    { "source": "/v2", "destination": "/index.html?theme=sage" },
+    { "source": "/v2", "destination": "/index.html?theme=navy" },
     { "source": "/v3", "destination": "/index.html?theme=charcoal" }
   ]
 }
